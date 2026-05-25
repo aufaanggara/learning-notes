@@ -33,4 +33,6 @@ learning-notes/
 
 ---
 
-**Dibuat oleh:** Muhammad Falah Aufa Anggara
+**Dibuat oleh:** Muhammad Falah Aufa Anggara  
+**GitHub:** [aufaanggara](https://github.com/aufaanggara)  
+**Portfolio:** [cybersec-portfolio](https://github.com/aufaanggara/cybersec-portfolio)
