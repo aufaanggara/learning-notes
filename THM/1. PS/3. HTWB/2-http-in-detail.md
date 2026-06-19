@@ -1,46 +1,45 @@
-```
-=== HTTP in Detail - Resume Materi ===
-[05 Mei 2026]
+# HTTP in Detail - Resume Materi
+*05 Mei 2026*
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 APA ITU HTTP & HTTPS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## APA ITU HTTP & HTTPS
+
 HTTP   : HyperText Transfer Protocol
          Protokol untuk komunikasi dengan web server
-         Dikembangkan : Tim Berners-Lee (1989-1991)
-         Fungsi : transmisi webpage data (HTML, images, videos, dll)
+- **Dikembangkan**: Tim Berners-Lee (1989-1991)
+- **Fungsi**: transmisi webpage data (HTML, images, videos, dll)
 
 HTTPS  : HTTP Secure (versi aman dari HTTP)
          Data dienkripsi → mencegah orang lain baca data kita
-         Fungsi : (1) enkripsi data, (2) verifikasi server asli (bukan palsu)
-         Port   : HTTP = 80, HTTPS = 443
+- **Fungsi**: (1) enkripsi data, (2) verifikasi server asli (bukan palsu)
+- **Port**: HTTP = 80, HTTPS = 443
 
-Analogi : HTTP = kirim surat terbuka (siapa saja bisa baca)
+- **Analogi**: HTTP = kirim surat terbuka (siapa saja bisa baca)
           HTTPS = kirim surat dalam amplop tersegel + materai (aman & terverifikasi)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 KOMPONEN URL (Uniform Resource Locator)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## KOMPONEN URL (Uniform Resource Locator)
+
 Format lengkap:
 scheme://user:password@host:port/path?query#fragment
 
-Scheme   : Protokol yang digunakan (http, https, ftp)
-User     : Username & password untuk autentikasi (opsional)
-Host     : Domain name atau IP address server
-Port     : Port koneksi (default: 80 untuk HTTP, 443 untuk HTTPS)
+- **Scheme**: Protokol yang digunakan (http, https, ftp)
+- **User**: Username & password untuk autentikasi (opsional)
+- **Host**: Domain name atau IP address server
+- **Port**: Port koneksi (default: 80 untuk HTTP, 443 untuk HTTPS)
            Range valid: 1-65535
-Path     : Lokasi file/resource di server
-Query    : Parameter tambahan (?id=1&name=admin)
+- **Path**: Lokasi file/resource di server
+- **Query**: Parameter tambahan (?id=1&name=admin)
            Format: key=value, dipisah dengan &
-Fragment : Referensi ke bagian spesifik halaman (#section1)
+- **Fragment**: Referensi ke bagian spesifik halaman (#section1)
            Untuk jump langsung ke lokasi tertentu
 
 Contoh:
 https://user:pass@tryhackme.com:443/room?id=1#task3
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 HTTP REQUEST - STRUKTUR
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## HTTP REQUEST - STRUKTUR
+
 Format sederhana:
 METHOD /path HTTP/version
 
@@ -51,36 +50,36 @@ User-Agent: Mozilla/5.0 Firefox/87.0
 Referer: https://google.com
 [baris kosong] ← wajib untuk menandai akhir request
 
-Line 1 : Method + Path + HTTP Version
+- **Line 1**: Method + Path + HTTP Version
 Line 2+ : Headers (informasi tambahan)
-Line terakhir : Baris kosong (penanda akhir)
+- **Line terakhir**: Baris kosong (penanda akhir)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 HTTP METHODS - WAJIB HAPAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-GET    : Mengambil/membaca data dari server
+
+## HTTP METHODS - WAJIB HAPAL
+
+- **GET**: Mengambil/membaca data dari server
          Contoh: buka halaman web, download gambar
          Paling sering digunakan untuk browsing biasa
 
-POST   : Mengirim data ke server → MEMBUAT record baru
+- **POST**: Mengirim data ke server → MEMBUAT record baru
          Contoh: submit form registrasi, kirim komentar
          Data dikirim di body request (tidak terlihat di URL)
 
-PUT    : Mengirim data ke server → UPDATE data yang sudah ada
+- **PUT**: Mengirim data ke server → UPDATE data yang sudah ada
          Contoh: edit profil, update artikel blog
 
-DELETE : Menghapus data dari server
+- **DELETE**: Menghapus data dari server
          Contoh: hapus akun, hapus postingan
 
 Pemetaan CRUD:
-GET    = Read (baca)
-POST   = Create (buat baru)
-PUT    = Update (ubah yang ada)
-DELETE = Delete (hapus)
+- **GET**: Read (baca)
+- **POST**: Create (buat baru)
+- **PUT**: Update (ubah yang ada)
+- **DELETE**: Delete (hapus)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 HTTP STATUS CODES - KATEGORI
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## HTTP STATUS CODES - KATEGORI
+
 100-199 : Information Response
           Request diterima sebagian, lanjutkan kirim
           Jarang digunakan sekarang
@@ -97,91 +96,91 @@ DELETE = Delete (hapus)
 500-599 : Server Error ⚠
           Ada masalah di sisi server
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 STATUS CODES YANG WAJIB HAPAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## STATUS CODES YANG WAJIB HAPAL
+
 SUCCESS:
-200 OK       : Request berhasil sempurna
-201 Created  : Resource baru berhasil dibuat (user baru, post baru)
+- **200 OK**: Request berhasil sempurna
+- **201 Created**: Resource baru berhasil dibuat (user baru, post baru)
 
 REDIRECTION:
-301 Moved Permanently : Halaman pindah permanen → update bookmark
-302 Found            : Redirect sementara, bisa berubah lagi
+- **301 Moved Permanently**: Halaman pindah permanen → update bookmark
+- **302 Found**: Redirect sementara, bisa berubah lagi
 
 CLIENT ERROR:
-400 Bad Request     : Request salah/tidak lengkap
-401 Not Authorised  : Belum login/autentikasi
-403 Forbidden       : Tidak punya izin (meski sudah login)
-404 Not Found       : Halaman tidak ditemukan
-405 Method Not Allowed : Method salah (kirim GET, harusnya POST)
+- **400 Bad Request**: Request salah/tidak lengkap
+- **401 Not Authorised**: Belum login/autentikasi
+- **403 Forbidden**: Tidak punya izin (meski sudah login)
+- **404 Not Found**: Halaman tidak ditemukan
+- **405 Method Not Allowed**: Method salah (kirim GET, harusnya POST)
 
 SERVER ERROR:
-500 Internal Server Error : Server error, tidak tahu cara handle
-503 Service Unavailable   : Server overload atau maintenance
+- **500 Internal Server Error**: Server error, tidak tahu cara handle
+- **503 Service Unavailable**: Server overload atau maintenance
 
 Analogi 404:
 > Seperti cari rumah nomor 404 di jalan yang hanya sampai nomor 300
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 HTTP HEADERS - REQUEST (Client → Server)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## HTTP HEADERS - REQUEST (Client → Server)
+
 Host:
-  Fungsi : Tentukan website mana yang diminta (1 server bisa host banyak site)
-  Contoh : Host: tryhackme.com
+- **Fungsi**: Tentukan website mana yang diminta (1 server bisa host banyak site)
+- **Contoh**: Host: tryhackme.com
   Penting: Tanpa ini, dapat website default server
 
 User-Agent:
-  Fungsi : Info browser & versi yang dipakai
-  Contoh : User-Agent: Mozilla/5.0 Firefox/87.0
-  Kenapa : Server bisa format halaman sesuai browser
+- **Fungsi**: Info browser & versi yang dipakai
+- **Contoh**: User-Agent: Mozilla/5.0 Firefox/87.0
+- **Kenapa**: Server bisa format halaman sesuai browser
            Beberapa fitur HTML/JS/CSS hanya ada di browser tertentu
 
 Content-Length:
-  Fungsi : Ukuran data yang dikirim (dalam bytes)
-  Contoh : Content-Length: 348
-  Kenapa : Server bisa validasi tidak ada data yang hilang
+- **Fungsi**: Ukuran data yang dikirim (dalam bytes)
+- **Contoh**: Content-Length: 348
+- **Kenapa**: Server bisa validasi tidak ada data yang hilang
 
 Accept-Encoding:
-  Fungsi : Jenis kompresi yang didukung browser
-  Contoh : Accept-Encoding: gzip, deflate, br
-  Kenapa : Data bisa dikompres → lebih cepat dikirim via internet
+- **Fungsi**: Jenis kompresi yang didukung browser
+- **Contoh**: Accept-Encoding: gzip, deflate, br
+- **Kenapa**: Data bisa dikompres → lebih cepat dikirim via internet
 
 Cookie:
-  Fungsi : Kirim data yang disimpan sebelumnya ke server
-  Contoh : Cookie: sessionid=abc123; username=john
-  Kenapa : Server bisa "ingat" siapa kita (HTTP stateless)
+- **Fungsi**: Kirim data yang disimpan sebelumnya ke server
+- **Contoh**: Cookie: sessionid=abc123; username=john
+- **Kenapa**: Server bisa "ingat" siapa kita (HTTP stateless)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 HTTP HEADERS - RESPONSE (Server → Client)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## HTTP HEADERS - RESPONSE (Server → Client)
+
 Set-Cookie:
-  Fungsi : Perintah browser untuk simpan data ini
-  Contoh : Set-Cookie: sessionid=xyz789; Path=/; Secure
-  Kenapa : Data akan dikirim balik di request berikutnya
+- **Fungsi**: Perintah browser untuk simpan data ini
+- **Contoh**: Set-Cookie: sessionid=xyz789; Path=/; Secure
+- **Kenapa**: Data akan dikirim balik di request berikutnya
 
 Cache-Control:
-  Fungsi : Durasi simpan response di cache browser
-  Contoh : Cache-Control: max-age=3600 (1 jam)
-  Kenapa : Tidak perlu download ulang jika belum expired
+- **Fungsi**: Durasi simpan response di cache browser
+- **Contoh**: Cache-Control: max-age=3600 (1 jam)
+- **Kenapa**: Tidak perlu download ulang jika belum expired
 
 Content-Type:
-  Fungsi : Tipe data yang dikirim server
-  Contoh : Content-Type: text/html; charset=UTF-8
+- **Fungsi**: Tipe data yang dikirim server
+- **Contoh**: Content-Type: text/html; charset=UTF-8
            Content-Type: image/jpeg
            Content-Type: application/json
-  Kenapa : Browser tahu cara render/proses data
+- **Kenapa**: Browser tahu cara render/proses data
 
 Content-Encoding:
-  Fungsi : Metode kompresi yang dipakai
-  Contoh : Content-Encoding: gzip
-  Kenapa : Browser tahu cara dekompresi data
+- **Fungsi**: Metode kompresi yang dipakai
+- **Contoh**: Content-Encoding: gzip
+- **Kenapa**: Browser tahu cara dekompresi data
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 COOKIES - CARA KERJA LENGKAP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Definisi : Potongan data kecil disimpan di komputer
-Kenapa   : HTTP = stateless (tidak ingat request sebelumnya)
-           Cookie = cara server "mengingat" kita
+
+## COOKIES - CARA KERJA LENGKAP
+
+- **Definisi**: Potongan data kecil disimpan di komputer
+- **Kenapa**: HTTP = stateless (tidak ingat request sebelumnya)
+- **Cookie**: cara server "mengingat" kita
 
 Alur kerja:
 1. Client request halaman → GET /
@@ -200,28 +199,28 @@ Kegunaan:
 Format cookie:
 Cookie: key1=value1; key2=value2
 
-Nilai cookie = biasanya TOKEN (kode rahasia)
+- **Nilai cookie**: biasanya TOKEN (kode rahasia)
 BUKAN password dalam bentuk plaintext!
 
 Lihat cookies:
 Browser DevTools → Network tab → pilih request → tab Cookies
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 PATH PARAMETER vs QUERY PARAMETER
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## PATH PARAMETER vs QUERY PARAMETER
+
 PATH PARAMETER (RESTful URL):
-Format   : /resource/id
-Contoh   : /user/1, /blog/5, /product/123
-Kegunaan : Identifikasi resource spesifik
-Benefit  : Clean, SEO friendly, standar REST API
-Struktur : Hierarki jelas (user → specific user)
+- **Format**: /resource/id
+- **Contoh**: /user/1, /blog/5, /product/123
+- **Kegunaan**: Identifikasi resource spesifik
+- **Benefit**: Clean, SEO friendly, standar REST API
+- **Struktur**: Hierarki jelas (user → specific user)
 
 QUERY PARAMETER (Query String):
-Format   : /resource?key=value&key2=value2
-Contoh   : /search?q=laptop&sort=price
+- **Format**: /resource?key=value&key2=value2
+- **Contoh**: /search?q=laptop&sort=price
            /users?role=admin&active=true
-Kegunaan : Filtering, searching, optional parameters
-Benefit  : Fleksibel untuk multiple filters
+- **Kegunaan**: Filtering, searching, optional parameters
+- **Benefit**: Fleksibel untuk multiple filters
 
 Kapan pakai:
 Path → Identifikasi resource utama (/user/123)
@@ -235,9 +234,9 @@ Analogi:
 > Path = alamat rumah (Jl. Merdeka No. 5)
 > Query = catatan tambahan (rumah pagar biru, ada pohon mangga)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 HTTP RESPONSE - STRUKTUR
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## HTTP RESPONSE - STRUKTUR
+
 Format:
 HTTP/version StatusCode StatusMessage
 Header1: value
@@ -256,49 +255,49 @@ Content-Length: 252
 <body>Welcome to TryHackMe</body>
 </html>
 
-Line 1 : HTTP version + Status Code + Message
+- **Line 1**: HTTP version + Status Code + Message
 Line 2+ : Response headers
-Baris kosong : Pemisah header dengan body
-Sisanya : Body (konten yang diminta)
+- **Baris kosong**: Pemisah header dengan body
+- **Sisanya**: Body (konten yang diminta)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 ISTILAH PENTING WAJIB HAPAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Stateless       : HTTP tidak menyimpan riwayat request sebelumnya
+
+## ISTILAH PENTING WAJIB HAPAL
+
+- **Stateless**: HTTP tidak menyimpan riwayat request sebelumnya
                   Setiap request = berdiri sendiri
                   Solusi: pakai cookies/session
 
-Protocol        : Aturan komunikasi antara client & server
+- **Protocol**: Aturan komunikasi antara client & server
 
-Encryption      : Proses mengacak data agar tidak bisa dibaca pihak lain
+- **Encryption**: Proses mengacak data agar tidak bisa dibaca pihak lain
                   HTTPS = HTTP + encryption
 
-Request         : Permintaan dari client ke server
+- **Request**: Permintaan dari client ke server
 
-Response        : Jawaban dari server ke client
+- **Response**: Jawaban dari server ke client
 
-Header          : Metadata/info tambahan di request/response
+- **Header**: Metadata/info tambahan di request/response
 
-Body            : Konten utama yang dikirim (form data, JSON, HTML, dll)
+- **Body**: Konten utama yang dikirim (form data, JSON, HTML, dll)
 
-Session         : Periode waktu user aktif berinteraksi dengan aplikasi
+- **Session**: Periode waktu user aktif berinteraksi dengan aplikasi
                   Ditrack pakai session cookie
 
-Token           : Kode unik sebagai bukti autentikasi
+- **Token**: Kode unik sebagai bukti autentikasi
                   Lebih aman daripada simpan password di cookie
 
-REST API        : Arsitektur web service menggunakan HTTP methods secara standar
+- **REST API**: Arsitektur web service menggunakan HTTP methods secara standar
                   GET=read, POST=create, PUT=update, DELETE=delete
 
-Endpoint        : URL spesifik untuk akses resource tertentu
+- **Endpoint**: URL spesifik untuk akses resource tertentu
                   Contoh: /api/users, /api/products/123
 
-MIME Type       : Format standar untuk Content-Type
+- **MIME Type**: Format standar untuk Content-Type
                   Contoh: text/html, application/json, image/png
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 PERBEDAAN HTTP/1.0 vs HTTP/1.1 vs HTTP/2
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## PERBEDAAN HTTP/1.0 vs HTTP/1.1 vs HTTP/2
+
 HTTP/1.0 (1996):
 - 1 request per connection → lambat
 - Tidak ada Host header → sulit virtual hosting
@@ -319,9 +318,9 @@ HTTP/3 (2022):
 - Pakai QUIC (UDP) bukan TCP
 - Lebih cepat & reliable untuk koneksi bermasalah
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 TIPS UNTUK PENTEST
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## TIPS UNTUK PENTEST
+
 ✓ Selalu cek HTTP headers → bisa bocorkan info server/tech stack
 ✓ Perhatikan cookies → session token bisa dicuri (session hijacking)
 ✓ Test semua HTTP methods → kadang DELETE/PUT tidak diamankan
@@ -340,9 +339,9 @@ Vulnerability umum terkait HTTP:
 - Header Injection
 - Cache Poisoning
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 CHEAT SHEET PRAKTIS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## CHEAT SHEET PRAKTIS
+
 Lihat HTTP traffic:
 Browser DevTools → Network tab
 Burp Suite → Intercept ON
@@ -367,9 +366,9 @@ Common ports HTTP services:
 3000 → Development server (Node.js)
 5000 → Development server (Flask)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 CONTENT-TYPE UMUM (MIME TYPES)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## CONTENT-TYPE UMUM (MIME TYPES)
+
 TEXT:
 text/html              → HTML document
 text/plain             → Plain text
@@ -397,75 +396,75 @@ video/mp4              → MP4 video
 audio/mpeg             → MP3 audio
 audio/wav              → WAV audio
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 HTTP HEADER SECURITY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## HTTP HEADER SECURITY
+
 Security Headers (Server → Client):
 
 Strict-Transport-Security (HSTS):
-  Fungsi : Paksa browser selalu pakai HTTPS
-  Contoh : Strict-Transport-Security: max-age=31536000
+- **Fungsi**: Paksa browser selalu pakai HTTPS
+- **Contoh**: Strict-Transport-Security: max-age=31536000
   Benefit: Cegah downgrade attack ke HTTP
 
 X-Frame-Options:
-  Fungsi : Cegah clickjacking
-  Contoh : X-Frame-Options: DENY
+- **Fungsi**: Cegah clickjacking
+- **Contoh**: X-Frame-Options: DENY
   Benefit: Website tidak bisa ditampilkan dalam iframe
 
 X-Content-Type-Options:
-  Fungsi : Cegah MIME sniffing
-  Contoh : X-Content-Type-Options: nosniff
+- **Fungsi**: Cegah MIME sniffing
+- **Contoh**: X-Content-Type-Options: nosniff
   Benefit: Browser harus ikuti Content-Type yang dideklarasi
 
 Content-Security-Policy (CSP):
-  Fungsi : Kontrol resource mana yang boleh dimuat
-  Contoh : Content-Security-Policy: default-src 'self'
+- **Fungsi**: Kontrol resource mana yang boleh dimuat
+- **Contoh**: Content-Security-Policy: default-src 'self'
   Benefit: Cegah XSS attack
 
 X-XSS-Protection:
-  Fungsi : Aktifkan XSS filter browser (deprecated)
-  Contoh : X-XSS-Protection: 1; mode=block
-  Note   : Diganti dengan CSP yang lebih powerful
+- **Fungsi**: Aktifkan XSS filter browser (deprecated)
+- **Contoh**: X-XSS-Protection: 1; mode=block
+- **Note**: Diganti dengan CSP yang lebih powerful
 
 Referrer-Policy:
-  Fungsi : Kontrol informasi referer yang dikirim
-  Contoh : Referrer-Policy: no-referrer
+- **Fungsi**: Kontrol informasi referer yang dikirim
+- **Contoh**: Referrer-Policy: no-referrer
   Benefit: Privacy protection
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 HTTP AUTHENTICATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## HTTP AUTHENTICATION
+
 Basic Authentication:
-  Format : Authorization: Basic base64(username:password)
-  Contoh : Authorization: Basic YWRtaW46cGFzcw==
+- **Format**: Authorization: Basic base64(username:password)
+- **Contoh**: Authorization: Basic YWRtaW46cGFzcw==
   Kelemahan: Password encoded (BUKAN encrypted)
              Mudah di-decode
              Harus pakai HTTPS!
 
 Bearer Token:
-  Format : Authorization: Bearer <token>
-  Contoh : Authorization: Bearer eyJhbGc...
+- **Format**: Authorization: Bearer <token>
+- **Contoh**: Authorization: Bearer eyJhbGc...
   Kegunaan: API authentication, OAuth 2.0
-  Benefit : Token bisa di-revoke, ada expiry
+- **Benefit**: Token bisa di-revoke, ada expiry
 
 Digest Authentication:
-  Format : Authorization: Digest username="admin"...
+- **Format**: Authorization: Digest username="admin"...
   Benefit: Password di-hash, lebih aman dari Basic
   Jarang dipakai sekarang, diganti OAuth/JWT
 
 API Key:
-  Format : X-API-Key: abc123def456
+- **Format**: X-API-Key: abc123def456
           atau di query: /api/data?api_key=abc123
   Kegunaan: Simple API authentication
   Kelemahan: Tidak ada expiry otomatis
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 CORS (Cross-Origin Resource Sharing)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Definisi : Mekanisme izinkan/blokir request dari domain berbeda
-Kenapa   : Browser block AJAX request ke domain lain (security)
 
-Origin = protocol + domain + port
+## CORS (Cross-Origin Resource Sharing)
+
+- **Definisi**: Mekanisme izinkan/blokir request dari domain berbeda
+- **Kenapa**: Browser block AJAX request ke domain lain (security)
+
+- **Origin**: protocol + domain + port
 Contoh:
 - https://example.com:443  → 1 origin
 - http://example.com:80    → origin berbeda (protocol beda)
@@ -494,52 +493,42 @@ Pentest tip:
 ✓ Test dengan Origin berbeda
 ✓ Cek apakah credentials diizinkan + wildcard origin
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 CACHING MECHANISM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## CACHING MECHANISM
+
 Cache-Control directives:
 
-no-store
-  → Jangan simpan cache SAMA SEKALI
+no-store- Jangan simpan cache SAMA SEKALI
   Untuk: data sensitif, banking
 
-no-cache
-  → Boleh simpan tapi harus validasi dulu sebelum pakai
+no-cache- Boleh simpan tapi harus validasi dulu sebelum pakai
   Untuk: data yang sering berubah
 
-public
-  → Boleh di-cache di shared cache (CDN, proxy)
+public- Boleh di-cache di shared cache (CDN, proxy)
   Untuk: static assets (CSS, JS, images)
 
-private
-  → Hanya boleh di-cache di browser user
+private- Hanya boleh di-cache di browser user
   Untuk: data personal user
 
-max-age=3600
-  → Cache valid selama 3600 detik (1 jam)
+max-age=3600- Cache valid selama 3600 detik (1 jam)
   Setelah itu harus request ulang
 
-must-revalidate
-  → Setelah expired, WAJIB revalidasi ke server
+must-revalidate- Setelah expired, WAJIB revalidasi ke server
 
 Contoh kombinasi:
-Cache-Control: public, max-age=31536000, immutable
-→ File statis yang tidak akan pernah berubah (versioned assets)
+Cache-Control: public, max-age=31536000, immutable- File statis yang tidak akan pernah berubah (versioned assets)
 
-Cache-Control: private, no-cache, no-store, must-revalidate
-→ Data sangat sensitif (banking, medical)
+Cache-Control: private, no-cache, no-store, must-revalidate- Data sangat sensitif (banking, medical)
 
-Cache-Control: public, max-age=3600, must-revalidate
-→ News article (cache 1 jam)
+Cache-Control: public, max-age=3600, must-revalidate- News article (cache 1 jam)
 
 ETag & Last-Modified:
 ETag: "33a64df551425fcc55e4d42a148795d9f25f89d4"
-Last-Modified: Tue, 05 May 2026 10:52:47 GMT
-→ Untuk conditional request (304 Not Modified)
+Last-Modified: Tue, 05 May 2026 10:52:47 GMT- Untuk conditional request (304 Not Modified)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 HTTP/2 PUSH & MULTIPLEXING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## HTTP/2 PUSH & MULTIPLEXING
+
 Server Push:
   Server kirim resource SEBELUM diminta client
   Contoh: Request HTML → server push CSS & JS sekalian
@@ -562,9 +551,9 @@ Binary Protocol:
   HTTP/1.1: text-based
   HTTP/2  : binary-based → lebih efisien parsing
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 SESSION vs TOKEN AUTHENTICATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## SESSION vs TOKEN AUTHENTICATION
+
 SESSION-BASED (Cookie):
 1. User login → server buat session ID
 2. Session ID disimpan di cookie
@@ -606,9 +595,9 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
 eyJ1c2VyIjoiYWRtaW4iLCJleHAiOjE2MjAw...
 SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 COMPRESSION ALGORITHMS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## COMPRESSION ALGORITHMS
+
 gzip:
   Paling umum digunakan
   Kompresi ratio: baik
@@ -641,9 +630,9 @@ Tip untuk pentest:
 ✓ Cek apakah compression diaktifkan (performance issue)
 ✓ Test BREACH attack (jika HTTPS + compression + secret di response)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 REDIRECT TYPES & SECURITY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## REDIRECT TYPES & SECURITY
+
 Redirect Status Codes:
 
 301 Moved Permanently:
@@ -668,8 +657,7 @@ Redirect Status Codes:
   Seperti 301 tapi preserve HTTP method
 
 Open Redirect Vulnerability:
-URL: /redirect?url=https://evil.com
-→ User dikira redirect internal, ternyata ke situs phishing
+URL: /redirect?url=https://evil.com- User dikira redirect internal, ternyata ke situs phishing
 
 Cara test:
 1. Cari parameter redirect/return/callback/next
@@ -681,22 +669,18 @@ Secure redirect:
 ✓ Validasi URL dimulai dengan /
 ✓ Gunakan indirect reference (ID bukan URL langsung)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 RATE LIMITING & THROTTLING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## RATE LIMITING & THROTTLING
+
 Response Headers:
 
-X-RateLimit-Limit: 100
-  → Maksimal request per window
+X-RateLimit-Limit: 100- Maksimal request per window
 
-X-RateLimit-Remaining: 45
-  → Sisa quota request
+X-RateLimit-Remaining: 45- Sisa quota request
 
-X-RateLimit-Reset: 1620000000
-  → Timestamp reset quota (Unix timestamp)
+X-RateLimit-Reset: 1620000000- Timestamp reset quota (Unix timestamp)
 
-Retry-After: 60
-  → Tunggu 60 detik sebelum retry
+Retry-After: 60- Tunggu 60 detik sebelum retry
 
 Status code saat limit exceeded:
 429 Too Many Requests
@@ -727,9 +711,9 @@ Pentest tip:
 ✓ Cek apakah limit per IP atau per user
 ✓ Perhatikan header X-RateLimit untuk planning attack
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 HTTP METHOD TAMPERING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## HTTP METHOD TAMPERING
+
 HTTP Verb Tampering:
 
 Skenario:
@@ -773,9 +757,9 @@ Pentest checklist:
 ✓ Test TRACE untuk XSS
 ✓ Gunakan OPTIONS untuk recon
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 CHUNKED TRANSFER ENCODING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## CHUNKED TRANSFER ENCODING
+
 Kenapa chunked encoding:
 - Server tidak tahu Content-Length di awal
 - Streaming response (live data)
@@ -805,23 +789,20 @@ Result: "Wikipedia"
 HTTP Request Smuggling:
 Vulnerability saat proxy & backend berbeda parsing chunked
 Content-Length: 49
-Transfer-Encoding: chunked
-
-→ Proxy pakai Content-Length, Backend pakai Transfer-Encoding
-→ Request bisa "diselundupkan" (smuggling)
+Transfer-Encoding: chunked- Proxy pakai Content-Length, Backend pakai Transfer-Encoding- Request bisa "diselundupkan" (smuggling)
 
 Attack vector:
 CL.TE: Proxy pakai CL, Backend pakai TE
 TE.CL: Proxy pakai TE, Backend pakai CL
 TE.TE: Keduanya pakai TE, tapi parsing berbeda
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 SAME-ORIGIN POLICY (SOP)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Definisi : Browser security policy
+
+## SAME-ORIGIN POLICY (SOP)
+
+- **Definisi**: Browser security policy
            Script di satu origin tidak bisa akses data di origin lain
 
-Origin = scheme + host + port
+- **Origin**: scheme + host + port
 
 Contoh:
 https://example.com:443  ← Origin A
@@ -853,9 +834,9 @@ Vulnerability:
 - Postmessage XSS
 - JSONP hijacking
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 WEBSOCKET vs HTTP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## WEBSOCKET vs HTTP
+
 HTTP:
 - Request-Response model
 - Stateless
@@ -899,9 +880,9 @@ Security concern:
 ✓ Vulnerable to CSRF jika tidak ada token validation
 ✓ Man-in-the-middle jika tidak pakai WSS (WebSocket Secure)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 RANGKUMAN AKHIR - MIND MAP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## RANGKUMAN AKHIR - MIND MAP
+
 
 HTTP REQUEST:
 ├── Request Line: METHOD /path HTTP/version
@@ -945,4 +926,3 @@ COMMON VULNERABILITIES:
 └── Cache Poisoning
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```

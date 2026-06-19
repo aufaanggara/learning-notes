@@ -1,32 +1,29 @@
-```
-=== Networking - Packets, Frames & Protocols - Resume Materi ===
-[25 Mar 2026]
+# Networking - Packets, Frames & Protocols - Resume Materi
+*25 Mar 2026*
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 PACKET vs FRAME
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## PACKET vs FRAME
+
 Packet  → Data di Layer 3 (Network Layer) OSI
-          Berisi : IP header + payload
+- **Berisi**: IP header + payload
           Konteks: saat bicara IP address = bicara packet
 
 Frame   → Data di Layer 2 (Data Link Layer) OSI
-          Berisi : packet + MAC address (encapsulated)
+- **Berisi**: packet + MAC address (encapsulated)
           Konteks: saat encapsulating info dilepas = bicara frame
 
 Proses  → Encapsulation  = packet dibungkus jadi frame
-          Decapsulation  = frame dibuka, isi packet keluar
+- **Decapsulation**: frame dibuka, isi packet keluar
 
 Analogi → Surat (packet) di dalam amplop (frame)
-          Amplop = untuk pengiriman
-          Surat  = isi yang sebenarnya
+- **Amplop**: untuk pengiriman
+- **Surat**: isi yang sebenarnya
 
-Kenapa packet efisien?
-  → Data dipecah jadi potongan kecil → less bottleneck
-  → Contoh: gambar dipecah 3 packet → direkonstruksi di tujuan
+Kenapa packet efisien?- Data dipecah jadi potongan kecil → less bottleneck- Contoh: gambar dipecah 3 packet → direkonstruksi di tujuan
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 IP PACKET HEADERS (WAJIB HAPAL)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## IP PACKET HEADERS (WAJIB HAPAL)
+
 Time to Live    → Timer kedaluwarsa packet
 (TTL)             agar tidak nyumbat jaringan selamanya
 
@@ -38,17 +35,13 @@ Source Address  → IP pengirim (data tahu cara kembali)
 Destination     → IP penerima (data tahu mau ke mana)
 Address
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 TCP (Transmission Control Protocol)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Sifat    : Connection-based
+
+## TCP (Transmission Control Protocol)
+
+- **Sifat**: Connection-based
            Harus bangun koneksi DULU sebelum kirim data
 
-Model    : TCP/IP = 4 layer (versi ringkas OSI)
-           → Application
-           → Transport
-           → Internet
-           → Network Interface
+- **Model**: TCP/IP = 4 layer (versi ringkas OSI)- Application- Transport- Internet- Network Interface
 
 Kelebihan TCP               Kekurangan TCP
 ─────────────────────       ─────────────────────────────────
@@ -59,9 +52,9 @@ agar tidak flood data         lain (koneksi direservasi terus)
 Banyak proses untuk         Jauh lebih lambat dari UDP
 reliability                 (lebih banyak komputasi)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 TCP HEADERS (WAJIB HAPAL)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## TCP HEADERS (WAJIB HAPAL)
+
 Source Port     → Port pengirim, dipilih ACAK (0-65535)
 
 Destination     → Port tujuan, TIDAK acak
@@ -84,10 +77,10 @@ Data            → Tempat bytes file yang dikirim disimpan
 Flag            → Menentukan cara packet ditangani saat
                   handshake (SYN, ACK, FIN, RST, dll)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 THREE-WAY HANDSHAKE (WAJIB HAPAL)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Tujuan  : Membangun koneksi antara 2 perangkat
+
+## THREE-WAY HANDSHAKE (WAJIB HAPAL)
+
+- **Tujuan**: Membangun koneksi antara 2 perangkat
 
 Step  Message   Pengirim   Keterangan
 ────  ────────  ─────────  ──────────────────────────────
@@ -105,11 +98,11 @@ Diagram:
   Alice ──── ACK ────────→ Bob
   [koneksi terbentuk, data mulai mengalir]
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 SEQUENCE NUMBER & ISN
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ISN = Initial Sequence Number (nomor urut awal, dipilih acak)
-Setiap data berikutnya = ISN + 1
+
+## SEQUENCE NUMBER & ISN
+
+- **ISN**: Initial Sequence Number (nomor urut awal, dipilih acak)
+- **Setiap data berikutnya**: ISN + 1
 
 Proses kesepakatan ISN (3 langkah):
 1. SYN     → Client: "ISN saya = 0, sync denganmu"
@@ -123,11 +116,11 @@ Tabel urutan:
   Client (Sender)  1      1+1=2
   Client (Sender)  2      2+1=3
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 TCP CLOSING CONNECTION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Kapan  : Setelah device yakin semua data sudah diterima
-Kenapa : TCP reservasi resource → tutup SESEGERA MUNGKIN
+
+## TCP CLOSING CONNECTION
+
+- **Kapan**: Setelah device yakin semua data sudah diterima
+- **Kenapa**: TCP reservasi resource → tutup SESEGERA MUNGKIN
 
 Diagram:
   Alice ──── FIN ────────→ Bob   (Alice minta tutup)
@@ -135,11 +128,11 @@ Diagram:
   Alice ←─── FIN ────────  Bob   (Bob juga minta tutup)
   Alice ──── ACK ────────→ Bob   (Alice akui, selesai)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 STEALTH SCAN (HALF-OPEN SCAN) -sS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Tujuan  : Scanning port tanpa tercatat di log server
-Cara    : Handshake TIDAK diselesaikan (half-open)
+
+## STEALTH SCAN (HALF-OPEN SCAN) -sS
+
+- **Tujuan**: Scanning port tanpa tercatat di log server
+- **Cara**: Handshake TIDAK diselesaikan (half-open)
 
 Normal TCP (-sT):          Stealth (-sS):
   SYN →                      SYN →
@@ -154,15 +147,15 @@ Perbandingan:
   Kecepatan   Lebih lambat    Lebih cepat
   Deteksi     Mudah           Lebih sulit
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 UDP (User Datagram Protocol)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Sifat    : Stateless
+
+## UDP (User Datagram Protocol)
+
+- **Sifat**: Stateless
            Tidak butuh koneksi konstan
            Tidak ada Three-Way Handshake
            Tidak ada sinkronisasi
 
-Cocok untuk : Video streaming, voice chat, kondisi
+- **Cocok untuk**: Video streaming, voice chat, kondisi
               di mana kehilangan data masih bisa ditoleransi
 
 Kelebihan UDP               Kekurangan UDP
@@ -181,9 +174,9 @@ Diagram koneksi UDP:
   Bob  ←─── RESPONSE ───  Alice   ← terus kirim tanpa
   Bob  ←─── RESPONSE ───  Alice     tunggu konfirmasi
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 UDP HEADERS (lebih sedikit dari TCP)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## UDP HEADERS (lebih sedikit dari TCP)
+
 Time to Live    → Timer kedaluwarsa packet
 (TTL)
 
@@ -199,9 +192,9 @@ Port              Contoh: web server port 80
 
 Data            → Tempat bytes file yang dikirim disimpan
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 TCP vs UDP (PERBANDINGAN LENGKAP)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## TCP vs UDP (PERBANDINGAN LENGKAP)
+
                   TCP              UDP
   ─────────────   ──────────────   ──────────────
   Jenis           Connection-based Stateless
@@ -214,30 +207,29 @@ Data            → Tempat bytes file yang dikirim disimpan
   Cocok untuk     File transfer,   Video streaming,
                   web browsing     voice chat, game
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 PORT — APA ITU & KENAPA PENTING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Definisi : Titik di mana data dipertukarkan antar perangkat
-Range    : 0 – 65535
-Common   : Port 0 – 1024 = Common Ports (port umum/standar)
 
-Analogi  : Pelabuhan → port harus kompatibel dengan kapal
+## PORT — APA ITU & KENAPA PENTING
+
+- **Definisi**: Titik di mana data dipertukarkan antar perangkat
+- **Range**: 0 – 65535
+- **Common**: Port 0 – 1024 = Common Ports (port umum/standar)
+
+- **Analogi**: Pelabuhan → port harus kompatibel dengan kapal
            Kapal pesiar ≠ bisa masuk port kapal nelayan
 
-Fungsi   : Enforce aturan komunikasi antar perangkat
+- **Fungsi**: Enforce aturan komunikasi antar perangkat
            Memastikan aplikasi berbeda bisa saling pahami data
 
-Standar  : Misal semua browser kirim data via port 80
-           → Chrome & Firefox bisa interpret data sama
+- **Standar**: Misal semua browser kirim data via port 80- Chrome & Firefox bisa interpret data sama
 
 CATATAN PENTING:
   Standar bisa diubah! Tapi aplikasi tetap anggap standar dipakai
   Jika pakai port non-standar → wajib tulis dengan colon (:)
   Contoh: 192.168.1.1:8080
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 COMMON PORTS — WAJIB HAPAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## COMMON PORTS — WAJIB HAPAL
+
 Port   Protokol   Kepanjangan                    Fungsi
 ─────  ─────────  ─────────────────────────────  ────────────────────────
 21     FTP        File Transfer Protocol         Download file dari server
@@ -254,18 +246,17 @@ Port   Protokol   Kepanjangan                    Fungsi
                                                  tampilan desktop visual
                                                  (beda dari SSH = visual!)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 ISTILAH PENTING WAJIB HAPAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Encapsulation    = proses membungkus packet menjadi frame
-Decapsulation    = proses membuka frame untuk dapat packet
-Stateless        = tidak ingat status koneksi (UDP)
-Stateful         = melacak & ingat status koneksi (TCP)
-ISN              = Initial Sequence Number, nomor urut awal acak
-TTL              = Time to Live, timer kedaluwarsa packet
-Checksum         = nilai cek integritas data matematika
+
+## ISTILAH PENTING WAJIB HAPAL
+
+- **Encapsulation**: proses membungkus packet menjadi frame
+- **Decapsulation**: proses membuka frame untuk dapat packet
+- **Stateless**: tidak ingat status koneksi (UDP)
+- **Stateful**: melacak & ingat status koneksi (TCP)
+- **ISN**: Initial Sequence Number, nomor urut awal acak
+- **TTL**: Time to Live, timer kedaluwarsa packet
+- **Checksum**: nilai cek integritas data matematika
 Half-Open Scan   = teknik scan (-sS) yang tidak selesaikan handshake
-Common Port      = port standar dalam range 0-1024
-Bottleneck       = kemacetan/penumpukan data di jaringan
-Acknowledgement  = konfirmasi bahwa data sudah diterima (ACK)
-```
+- **Common Port**: port standar dalam range 0-1024
+- **Bottleneck**: kemacetan/penumpukan data di jaringan
+- **Acknowledgement**: konfirmasi bahwa data sudah diterima (ACK)

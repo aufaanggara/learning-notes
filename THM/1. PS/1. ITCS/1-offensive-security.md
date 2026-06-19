@@ -1,9 +1,9 @@
-=== Offensive Security Introduction - Resume Materi ===
-[17 Mei 2026]
+# Offensive Security Introduction - Resume Materi
+*17 Mei 2026*
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 OFFENSIVE vs DEFENSIVE SECURITY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## OFFENSIVE vs DEFENSIVE SECURITY
+
 Offensive Security → PROAKTIF: berpikir & bertindak seperti penyerang
                      Tujuan: temukan & eksploitasi kelemahan SEBELUM hacker jahat
                      Analogi: ujian ketahanan dengan menyerang sendiri
@@ -18,9 +18,9 @@ Perbedaan Utama:
 • Offensive = CARI celah dengan menyerang (simulate attacker)
 • Defensive = TUTUP celah & tangkal serangan (protect & detect)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 KONSEP HACKING ETIS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## KONSEP HACKING ETIS
+
 Definisi: Hacking yang dilakukan secara LEGAL dalam lingkungan AMAN
 Syarat Mutlak:
   ✓ Ada izin resmi dari pemilik sistem
@@ -37,9 +37,9 @@ Platform Latihan:
 • Hack The Box → CTF challenges, realistic machines
 • VulnHub → vulnerable VMs untuk practice
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 WEB APPLICATION SECURITY BASICS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## WEB APPLICATION SECURITY BASICS
+
 Kelemahan Umum Web Apps:
 
 1. Hidden Pages / Directory Traversal
@@ -57,9 +57,9 @@ Kelemahan Umum Web Apps:
    Contoh: ?account=8881 → ubah jadi ?account=8882
    Dampak: Data breach, unauthorized access
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 TOOLS DASAR OFFENSIVE SECURITY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## TOOLS DASAR OFFENSIVE SECURITY
+
 Dirb / Dirbuster
   Fungsi: Brute force directory & file discovery di web server
   Cara Kerja: Coba ribuan kemungkinan nama direktori dari wordlist
@@ -87,32 +87,20 @@ Metasploit
   Fungsi: Framework eksploitasi dengan database exploit
   Gunakan untuk: automate exploitation process
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 TAHAPAN SERANGAN WEB (SIMPLIFIED)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. Reconnaissance (Pengintaian)
-   → Kumpulkan info tentang target
-   → Identifikasi teknologi yang dipakai (CMS, framework, server)
-   → TIDAK ada interaksi langsung dengan sistem
 
-2. Enumeration (Enumerasi)
-   → SCAN sistem untuk temukan attack surface
-   → Tools: Dirb, Nmap, Nikto
-   → Output: daftar direktori, port terbuka, service running
+## TAHAPAN SERANGAN WEB (SIMPLIFIED)
 
-3. Exploitation (Eksploitasi)
-   → Manfaatkan kelemahan untuk gain access
-   → Contoh: akses /admin tanpa autentikasi
-   → Contoh: manipulasi parameter untuk ubah data
+1. Reconnaissance (Pengintaian)- Kumpulkan info tentang target- Identifikasi teknologi yang dipakai (CMS, framework, server)- TIDAK ada interaksi langsung dengan sistem
 
-4. Post-Exploitation
-   → Maintain access atau pivot ke sistem lain
-   → Extract data sensitif
-   → Cover tracks (hapus log)
+2. Enumeration (Enumerasi)- SCAN sistem untuk temukan attack surface- Tools: Dirb, Nmap, Nikto- Output: daftar direktori, port terbuka, service running
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 LAB PRACTICE: FAKEBANK SCENARIO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. Exploitation (Eksploitasi)- Manfaatkan kelemahan untuk gain access- Contoh: akses /admin tanpa autentikasi- Contoh: manipulasi parameter untuk ubah data
+
+4. Post-Exploitation- Maintain access atau pivot ke sistem lain- Extract data sensitif- Cover tracks (hapus log)
+
+
+## LAB PRACTICE: FAKEBANK SCENARIO
+
 Skenario: Aplikasi banking dengan kelemahan keamanan
 
 Step 1: Directory Enumeration
@@ -135,9 +123,9 @@ Step 4: Documentation
   Catat: Vulnerability type, steps to reproduce, impact
   Report: Broken Access Control → unauthorized fund manipulation
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 INDIKATOR HTTP RESPONSE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## INDIKATOR HTTP RESPONSE
+
 Kode Status yang Penting Dikenali:
 
 200 OK           → Halaman ditemukan & berhasil diakses (TARGET UTAMA)
@@ -153,9 +141,9 @@ Saat Dirb Scanning:
 • Response 403 → ada file/folder tapi diblokir (investigasi lebih lanjut)
 • Response 301/302 → ikuti redirect untuk lihat endpoint sebenarnya
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 BEST PRACTICES OFFENSIVE SECURITY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## BEST PRACTICES OFFENSIVE SECURITY
+
 ✓ SELALU dapat izin tertulis sebelum test
 ✓ Kerja di environment TERISOLASI (lab/VM)
 ✓ Dokumentasikan SEMUA langkah yang dilakukan
@@ -169,28 +157,28 @@ Saat Dirb Scanning:
 ✗ JANGAN gunakan skill untuk keuntungan pribadi ilegal
 ✗ JANGAN lewati tahap enumeration (bisa miss important info)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 ISTILAH WAJIB HAPAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Offensive Security = pendekatan proaktif cari celah dengan simulate attack
-Defensive Security = pendekatan reaktif lindungi sistem dari ancaman
-Ethical Hacking    = hacking legal dengan izin untuk tujuan keamanan
-Content Discovery  = proses menemukan file/direktori tersembunyi di web
-Directory Brute Force = coba banyak kemungkinan nama direktori sampai ketemu
-Hidden Pages       = halaman web yang tidak ter-link tapi masih accessible
-Broken Access Control = kelemahan di mana user bisa akses fungsi yang seharusnya restricted
-Admin Panel        = interface management biasanya hanya untuk administrator
-Enumeration        = fase scanning untuk identifikasi detail sistem target
-HTTP Status Code   = kode respons server (200=OK, 404=Not Found, dll)
-Attack Surface     = semua titik masuk yang bisa diserang di sistem
-Wordlist           = daftar kata untuk brute force (directory names, passwords)
-Session            = koneksi aktif antara user dan aplikasi web
-Proof of Concept   = bukti bahwa vulnerability bisa dieksploitasi
-Flag               = string/tanda bukti berhasil selesaikan challenge (CTF)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 COMMAND REFERENCE CEPAT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## ISTILAH WAJIB HAPAL
+
+- **Offensive Security**: pendekatan proaktif cari celah dengan simulate attack
+- **Defensive Security**: pendekatan reaktif lindungi sistem dari ancaman
+- **Ethical Hacking**: hacking legal dengan izin untuk tujuan keamanan
+- **Content Discovery**: proses menemukan file/direktori tersembunyi di web
+- **Directory Brute Force**: coba banyak kemungkinan nama direktori sampai ketemu
+- **Hidden Pages**: halaman web yang tidak ter-link tapi masih accessible
+- **Broken Access Control**: kelemahan di mana user bisa akses fungsi yang seharusnya restricted
+- **Admin Panel**: interface management biasanya hanya untuk administrator
+- **Enumeration**: fase scanning untuk identifikasi detail sistem target
+- **HTTP Status Code**: kode respons server (200=OK, 404=Not Found, dll)
+- **Attack Surface**: semua titik masuk yang bisa diserang di sistem
+- **Wordlist**: daftar kata untuk brute force (directory names, passwords)
+- **Session**: koneksi aktif antara user dan aplikasi web
+- **Proof of Concept**: bukti bahwa vulnerability bisa dieksploitasi
+- **Flag**: string/tanda bukti berhasil selesaikan challenge (CTF)
+
+
+## COMMAND REFERENCE CEPAT
+
 # Directory brute force
 dirb http://target.thm
 gobuster dir -u http://target.thm -w /usr/share/wordlists/dirb/common.txt

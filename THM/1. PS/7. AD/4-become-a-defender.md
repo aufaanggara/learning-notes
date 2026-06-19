@@ -1,57 +1,45 @@
 # Ringkasan - Become a Defender
+# Defensive Security - Resume Materi
+*27 Mar 2026*
 
-```
-=== Defensive Security - Resume Materi ===
-[27 Mar 2026]
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 APA ITU DEFENSIVE SECURITY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Definisi : Memahami apa yang perlu dilindungi & menerapkan
+## APA ITU DEFENSIVE SECURITY
+
+- **Definisi**: Memahami apa yang perlu dilindungi & menerapkan
            langkah keamanan untuk MENCEGAH, MENDETEKSI,
            dan MEMITIGASI dampak serangan
-Tujuan   : Siap menghadapi insiden & merespons saat terjadi
-Pelaku   : Blue Team (kelompok defender keamanan siber)
-Analogi  : Seperti penjaga kota — harus tahu tata letak,
+- **Tujuan**: Siap menghadapi insiden & merespons saat terjadi
+- **Pelaku**: Blue Team (kelompok defender keamanan siber)
+- **Analogi**: Seperti penjaga kota — harus tahu tata letak,
            awasi masalah, dan tahu cara merespons
-Beda     : Offensive (Red Team) = cari cara masuk
+- **Beda**: Offensive (Red Team) = cari cara masuk
            Defensive (Blue Team) = pastikan tidak ada yang masuk
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 CIA TRIAD (FONDASI KEAMANAN)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## CIA TRIAD (FONDASI KEAMANAN)
+
 C = Confidentiality → Data hanya bisa diakses yang berwenang
 I = Integrity       → Data tidak boleh diubah tanpa izin
 A = Availability    → Sistem harus selalu tersedia saat dibutuhkan
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 5 KONSEP FONDASI DEFENSIVE SECURITY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. Prevention (Pencegahan)
-   → Hentikan serangan SEBELUM terjadi
-   → Cara : Firewall, antivirus, regular patching
 
-2. Detection (Deteksi)
-   → Monitor sistem untuk identifikasi aktivitas mencurigakan
-   → Cara : Logs, alerts, security tools
+## 5 KONSEP FONDASI DEFENSIVE SECURITY
 
-3. Mitigation (Mitigasi)
-   → Ambil tindakan SAAT insiden untuk batasi kerusakan
-   → Cara : Blokir traffic, isolasi sistem, nonaktifkan akun
+1. Prevention (Pencegahan)- Hentikan serangan SEBELUM terjadi- Cara : Firewall, antivirus, regular patching
 
-4. Analysis (Analisis)
-   → Selidiki APA yang terjadi, BAGAIMANA, sistem mana terdampak
-   → Cara : Tinjau logs & bukti-bukti lainnya
+2. Detection (Deteksi)- Monitor sistem untuk identifikasi aktivitas mencurigakan- Cara : Logs, alerts, security tools
 
-5. Response & Improvement (Respons & Peningkatan)
-   → Pulihkan dari insiden & tingkatkan pertahanan
-   → Tujuan : Kurangi risiko serangan serupa di masa depan
+3. Mitigation (Mitigasi)- Ambil tindakan SAAT insiden untuk batasi kerusakan- Cara : Blokir traffic, isolasi sistem, nonaktifkan akun
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 MEMAHAMI LINGKUNGAN (SCOPE)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Prinsip  : Kamu TIDAK BISA melindungi apa yang tidak kamu ketahui
-Scope    : Defender hanya lindungi milik organisasi/klien,
+4. Analysis (Analisis)- Selidiki APA yang terjadi, BAGAIMANA, sistem mana terdampak- Cara : Tinjau logs & bukti-bukti lainnya
+
+5. Response & Improvement (Respons & Peningkatan)- Pulihkan dari insiden & tingkatkan pertahanan- Tujuan : Kurangi risiko serangan serupa di masa depan
+
+
+## MEMAHAMI LINGKUNGAN (SCOPE)
+
+- **Prinsip**: Kamu TIDAK BISA melindungi apa yang tidak kamu ketahui
+- **Scope**: Defender hanya lindungi milik organisasi/klien,
            BUKAN semua yang ada di internet
 Isi scope: Perangkat harian + Server + Jaringan penghubung
 
@@ -72,9 +60,9 @@ TABEL ANALOGI KOTA vs KEAMANAN NYATA:
 │                             │ IP address blocking          │
 └─────────────────────────────┴──────────────────────────────┘
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 KOMPONEN INFRASTRUKTUR KLIEN
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## KOMPONEN INFRASTRUKTUR KLIEN
+
 ┌──────────────────┬───────────────────────────────┬────────────┐
 │ Komponen         │ Fungsi                        │ Analogi    │
 ├──────────────────┼───────────────────────────────┼────────────┤
@@ -94,13 +82,12 @@ TABEL ANALOGI KOTA vs KEAMANAN NYATA:
 │                  │ kendali organisasi            │ kota       │
 └──────────────────┴───────────────────────────────┴────────────┘
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 THE DEFENDER MINDSET
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Prinsip  : Lihat sistem sebagai RANTAI, bukan bagian terpisah
+
+## THE DEFENDER MINDSET
+
+- **Prinsip**: Lihat sistem sebagai RANTAI, bukan bagian terpisah
            Penyerang kompromikan 1 aset → pindah ke aset berikutnya
-Contoh   : Email jahat → workstation karyawan → curi kredensial
-           → akses mail server → curi data di database server
+- **Contoh**: Email jahat → workstation karyawan → curi kredensial- akses mail server → curi data di database server
 
 4 PRINSIP UTAMA DEFENDER:
 1. Threat Anticipation → Tanya "bagaimana jika?" untuk tiap sistem
@@ -112,10 +99,10 @@ Contoh   : Email jahat → workstation karyawan → curi kredensial
 4. Continuous Adaptation→ Pertahanan BUKAN pengaturan satu kali
                           Ancaman terus berkembang, teknik berubah
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 PERTAHANAN PER KOMPONEN (LAYERED)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Prinsip  : Tidak ada 1 alat yang bisa hentikan semua serangan
+
+## PERTAHANAN PER KOMPONEN (LAYERED)
+
+- **Prinsip**: Tidak ada 1 alat yang bisa hentikan semua serangan
            Gunakan PERTAHANAN BERLAPIS agar penyerang sulit berhasil
 
 ┌──────────────────┬───────────────────────────┬──────────────────────────┐
@@ -137,48 +124,36 @@ Prinsip  : Tidak ada 1 alat yang bisa hentikan semua serangan
 │                  │ datang dari sini          │ Monitor aktivitas        │
 └──────────────────┴───────────────────────────┴──────────────────────────┘
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 JALUR KARIR DEFENSIVE SECURITY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SOC (Security Operations Center)
-→ Monitor jaringan & sistem
-→ Deteksi & selidiki aktivitas mencurigakan / alert keamanan
 
-Threat Intelligence
-→ Riset ancaman, penyerang & tren terkini
-→ Bantu organisasi persiapkan diri dari potensi serangan
+## JALUR KARIR DEFENSIVE SECURITY
 
-DFIR (Digital Forensics & Incident Response)
-→ Selidiki insiden keamanan
-→ Pahami BAGAIMANA serangan terjadi
-→ Pulihkan sistem yang terdampak
+SOC (Security Operations Center)- Monitor jaringan & sistem- Deteksi & selidiki aktivitas mencurigakan / alert keamanan
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 ISTILAH PENTING WAJIB HAPAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Blue Team          = Kelompok defender keamanan siber
-Client Infra       = Jaringan, server, perangkat, aplikasi milik
+Threat Intelligence- Riset ancaman, penyerang & tren terkini- Bantu organisasi persiapkan diri dari potensi serangan
+
+DFIR (Digital Forensics & Incident Response)- Selidiki insiden keamanan- Pahami BAGAIMANA serangan terjadi- Pulihkan sistem yang terdampak
+
+
+## ISTILAH PENTING WAJIB HAPAL
+
+- **Blue Team**: Kelompok defender keamanan siber
+- **Client Infra**: Jaringan, server, perangkat, aplikasi milik
                      organisasi yang butuh perlindungan
-Visibility         = Kemampuan melihat & memantau aktivitas sistem
-Threat             = Bahaya potensial (hacker/malware) yang bisa
+- **Visibility**: Kemampuan melihat & memantau aktivitas sistem
+- **Threat**: Bahaya potensial (hacker/malware) yang bisa
                      merusak sistem atau data
-Prevention         = Hentikan ancaman sebelum terjadi
-Detection          = Identifikasi ancaman/aktivitas mencurigakan
-Mitigation         = Kurangi/hentikan dampak ancaman yang terdeteksi
-Risk               = Kemungkinan & dampak ancaman yang berhasil
+- **Prevention**: Hentikan ancaman sebelum terjadi
+- **Detection**: Identifikasi ancaman/aktivitas mencurigakan
+- **Mitigation**: Kurangi/hentikan dampak ancaman yang terdeteksi
+- **Risk**: Kemungkinan & dampak ancaman yang berhasil
                      merugikan organisasi
-Attack Surface     = Semua titik/celah yang bisa diserang di sistem
-Layered Defense    = Pertahanan berlapis — tidak bergantung 1 alat
-Logs               = Catatan aktivitas sistem untuk audit & deteksi
-Patching           = Pembaruan software untuk tutup celah keamanan
-Firewall Rules     = Aturan yang tentukan traffic mana boleh lewat
-Incident Response  = Respons terstruktur saat insiden keamanan terjadi
-```
-
+- **Attack Surface**: Semua titik/celah yang bisa diserang di sistem
+- **Layered Defense**: Pertahanan berlapis — tidak bergantung 1 alat
+- **Logs**: Catatan aktivitas sistem untuk audit & deteksi
+- **Patching**: Pembaruan software untuk tutup celah keamanan
+- **Firewall Rules**: Aturan yang tentukan traffic mana boleh lewat
+- **Incident Response**: Respons terstruktur saat insiden keamanan terjadi
 # Defensive Security — TryHackMe Pre Security Path
-
----
-
 ## 1 — What Is Defensive Security
 
 Defensive Security adalah cabang keamanan siber yang berfokus pada **memahami apa yang perlu dilindungi** dan menerapkan langkah-langkah keamanan untuk mencegah, mendeteksi, dan memitigasi dampak dari potensi serangan. Berbeda dengan offensive security yang berusaha menerobos masuk, defensive security justru berusaha memastikan tidak ada yang bisa masuk tanpa izin — dan jika pun terjadi insiden, sistem sudah siap merespons.
@@ -188,9 +163,6 @@ Para defender bekerja untuk mendapatkan **visibilitas** ke dalam sistem, mengide
 Para defender sering disebut sebagai **Blue Team**, dan mereka perlu memahami cara kerja penyerang — bukan untuk menyerang, tapi agar bisa membangun pertahanan yang efektif. Dengan memahami bagaimana penyerang berpikir, apa yang mereka targetkan, dan bagaimana serangan biasanya berlangsung, Blue Team bisa mengidentifikasi infrastruktur kritis dan menerapkan perlindungan yang tepat.
 
 Tujuan akhir dari defensive security bukan hanya mencegah serangan, tapi juga **siap menghadapi insiden dan merespons dengan cepat** ketika insiden tersebut benar-benar terjadi.
-
----
-
 ## 2 — Understanding Your Environment
 
 ### Mengapa Memahami Lingkungan Itu Penting
@@ -229,9 +201,6 @@ Berikut adalah komponen-komponen utama yang biasanya ada dalam infrastruktur kli
 - **Mail Server** — Server yang mengirim dan menerima email untuk seluruh organisasi. Analoginya seperti kantor pos — pusat komunikasi surat-menyurat.
 - **Firewall** — Sistem yang mengontrol traffic apa yang diizinkan masuk atau keluar dari jaringan. Analoginya seperti gerbang kota — penjaga yang memutuskan siapa boleh masuk dan keluar.
 - **Internet** — Jaringan eksternal yang tidak dikontrol oleh organisasi. Analoginya seperti wilayah di luar kota — area yang tidak bisa dikontrol dan menjadi sumber ancaman eksternal.
-
----
-
 ## 3 — Defending Your Environment
 
 ### The Defender Mindset
@@ -258,9 +227,6 @@ Berikut adalah pertahanan yang diterapkan untuk tiap komponen infrastruktur:
 - **Mail Server** — Risikonya adalah email berbahaya atau email phishing yang menipu karyawan. Pertahanannya adalah filter spam untuk memblokir email mencurigakan dan pemindaian lampiran sebelum sampai ke pengguna.
 - **Firewall** — Risikonya adalah orang asing dari internet yang mencoba masuk ke jaringan. Pertahanannya adalah aturan firewall yang mengontrol traffic secara ketat dan pemblokiran IP address yang sudah dikenal berbahaya.
 - **Internet (The Outside)** — Risikonya adalah semua ancaman eksternal yang datang dari luar. Pertahanannya adalah membatasi inbound traffic yang masuk dan memonitor secara aktif untuk mendeteksi aktivitas mencurigakan sedini mungkin.
-
----
-
 ## 4 — Where to Go From Here
 
 ### Terminologi Kunci yang Wajib Dikuasai
@@ -289,12 +255,7 @@ Course ini menandai akhir dari jalur **Pre Security** di TryHackMe. Dari sini, a
 - **Cyber Security 101** — untuk memperluas fondasi keamanan siber secara umum
 - **SOC Level 1** — untuk mendalami blue team dan monitoring
 - **Jr Penetration Tester** — untuk mendalami sisi offensive dan red teaming
-
----
-
 ## Ringkasan Alur Berpikir Keseluruhan Course
-
-```
 DEFENSIVE SECURITY
         ↓
 Pahami CIA Triad sebagai fondasi
@@ -314,4 +275,3 @@ Terapkan Pertahanan Berlapis per Komponen
         ↓
 Pilih Jalur Karir
 SOC | Threat Intelligence | DFIR
-```

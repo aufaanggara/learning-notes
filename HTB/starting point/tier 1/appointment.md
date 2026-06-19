@@ -1,28 +1,17 @@
-# === HTB - Appointment | Resume Materi ===
+# HTB - Appointment | Resume Materi
 ### [02 Mei 2026]
-
----
-
-## 📌 SQL (Structured Query Language)
+## ## SQL (Structured Query Language)
 Bahasa untuk berkomunikasi dengan database relasional.
 Contoh query login di server:
-```sql
 SELECT * FROM users WHERE username='admin' AND password='1234'
-```
-
----
-
-## 📌 SQL INJECTION (SQLi)
+## ## SQL INJECTION (SQLi)
 Teknik menyisipkan karakter SQL khusus ke input user untuk memanipulasi query database.
 
 **Konsep inti:** "Breaking Out of Context"
 Karakter `'` dipakai untuk **kabur dari string SQL**, lalu diikuti payload berbahaya.
 
 **OWASP Top 10 2021:** A03 - Injection
-
----
-
-## 📌 KARAKTER KOMENTAR MySQL
+## ## KARAKTER KOMENTAR MySQL
 | Karakter | Contoh | Keterangan |
 |----------|--------|------------|
 | `#` | `admin'#` | Single line comment |
@@ -30,10 +19,7 @@ Karakter `'` dipakai untuk **kabur dari string SQL**, lalu diikuti payload berba
 | `/* */` | `/* komentar */` | Multi line comment |
 
 Fungsi: **memotong sisa query** agar password diabaikan server.
-
----
-
-## 📌 PAYLOAD SQLi BYPASS LOGIN
+## ## PAYLOAD SQLi BYPASS LOGIN
 | Situasi | Payload | Keterangan |
 |---------|---------|------------|
 | Tau username | `admin'#` | Skip cek password |
@@ -41,18 +27,13 @@ Fungsi: **memotong sisa query** agar password diabaikan server.
 | Form pakai email | `' OR 1=1#` | Sama saja, yang diserang query nya |
 
 **Cara kerja `' OR 1=1#`:**
-```sql
 -- Normal:
 SELECT * FROM users WHERE username='' AND password='...'
 
 -- Setelah inject:
 SELECT * FROM users WHERE username='' OR 1=1#' AND password='...'
 -- OR 1=1 selalu TRUE → login berhasil tanpa tau username apapun!
-```
-
----
-
-## 📌 CARA BEDAIN TARGET DATABASE vs BROWSER
+## ## CARA BEDAIN TARGET DATABASE vs BROWSER
 | Situasi | Teknik |
 |---------|--------|
 | Form login / URL parameter `?id=1` | → SQLi ke **database** |
@@ -61,10 +42,7 @@ SELECT * FROM users WHERE username='' OR 1=1#' AND password='...'
 **Cara test cepat:** masukkan karakter `'`
 - Muncul error SQL → target **database** → coba SQLi
 - Tidak ada error → coba **XSS**
-
----
-
-## 📌 PERBEDAAN SQLi vs XSS
+## ## PERBEDAAN SQLi vs XSS
 | | SQLi | XSS |
 |--|------|-----|
 | Target | Database | Browser/pengguna |
@@ -73,10 +51,7 @@ SELECT * FROM users WHERE username='' OR 1=1#' AND password='...'
 | Tujuan | Manipulasi query DB | Inject script ke halaman |
 
 **Konsep sama:** keduanya pakai karakter khusus untuk keluar dari konteks aslinya.
-
----
-
-## 📌 KAPAN SQLi TIDAK BERHASIL
+## ## KAPAN SQLi TIDAK BERHASIL
 | Proteksi | Penjelasan |
 |----------|------------|
 | Prepared Statement | Input tidak menyentuh query langsung |
@@ -85,10 +60,7 @@ SELECT * FROM users WHERE username='' OR 1=1#' AND password='...'
 | NoSQL (Firebase) | Tidak pakai SQL sama sekali → kebal SQLi |
 
 **Firebase** punya kerentanan sendiri yaitu **Misconfigured Security Rules** (bukan SQLi).
-
----
-
-## 📌 NMAP - Switch Penting
+## ## NMAP - Switch Penting
 | Switch | Fungsi |
 |--------|--------|
 | `nmap [IP]` | Scan 1000 port umum, lihat semua yang terbuka |
@@ -99,14 +71,11 @@ SELECT * FROM users WHERE username='' OR 1=1#' AND password='...'
 | `-p-` | Scan semua 65.535 port |
 
 **Workflow wajib:**
-```bash
 # Step 1 - Recon
 nmap [IP]
 
 # Step 2 - Detail
 nmap -sV -sC -p [port] [IP]
-```
-
 **Port yang wajib hapal:**
 | Port | Service |
 |------|---------|
@@ -115,24 +84,15 @@ nmap -sV -sC -p [port] [IP]
 | 443 | HTTPS |
 | 21 | FTP |
 | 3306 | MySQL |
-
----
-
-## 📌 GOBUSTER - Switch Penting
+## ## GOBUSTER - Switch Penting
 | Switch | Fungsi |
 |--------|--------|
 | `dir` | Mode **direktori** |
 | `dns` | Mode subdomain |
 | `-u` | URL target |
 | `-w` | Wordlist |
-
-```bash
 gobuster dir -u http://[IP] -w /usr/share/wordlists/dirb/common.txt
-```
-
----
-
-## 📌 HTTP RESPONSE CODE PENTING
+## ## HTTP RESPONSE CODE PENTING
 | Code | Nama | Arti di CTF |
 |------|------|-------------|
 | 200 | OK | Halaman ditemukan ✅ |
@@ -141,10 +101,7 @@ gobuster dir -u http://[IP] -w /usr/share/wordlists/dirb/common.txt
 | 403 | Forbidden | Ada tapi dilarang akses |
 | 404 | Not Found | Tidak ada |
 | 500 | Internal Server Error | Server error |
-
----
-
-## 📌 ENUMERATION MINDSET
+## ## ENUMERATION MINDSET
 | Nmap nemuin port | Langkah logis berikutnya |
 |-----------------|--------------------------|
 | 80 / 443 | Buka browser |
@@ -153,10 +110,7 @@ gobuster dir -u http://[IP] -w /usr/share/wordlists/dirb/common.txt
 | 3306 | Coba konek MySQL |
 
 > Tidak selalu ada instruksi eksplisit — harus berpikir sendiri dari hasil recon!
-
----
-
-## 📌 ISTILAH PENTING
+## ## ISTILAH PENTING
 | Istilah | Arti |
 |---------|------|
 | SQLi | SQL Injection — manipulasi query database |
