@@ -96,4 +96,4 @@ Cara membaca output: setiap baris hasil yang diawali tanda `+` menunjukkan sebua
 
 **Admin panel** — antarmuka pengelolaan sistem yang seharusnya hanya bisa diakses oleh administrator atau staf berwenang.
 
-**Proof of concept** — bukti nyata dan terverifikasi bahwa suatu kerentanan memang bisa dieksploitasi, bukan sekadar asumsi teoritis.
+**Proof of concept** — bukti nyata dan terverifikasi bahwa suatu kerentanan memang bisa dieksploitasi, bukan sekadar asumsi teoritiss.
