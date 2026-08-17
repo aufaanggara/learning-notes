@@ -1,196 +1,84 @@
-# Offensive Security Introduction - Resume Materi
-*17 Mei 2026*
+=== Offensive Security Introduction — Resume Materi ===
+Room: Offensive Security Intro (TryHackMe)
+Tanggal: 17 Agustus 2026
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. KONSEP INTI: OFFENSIVE SECURITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## OFFENSIVE vs DEFENSIVE SECURITY
+Definisi
+**Offensive security** adalah pendekatan keamanan siber di mana seseorang berpikir dan bertindak seperti penyerang dengan tujuan menemukan kelemahan pada sistem sebelum penyerang sungguhan menemukannya lebih dulu. Pendekatan ini bersifat proaktif — bukan menunggu serangan terjadi, melainkan secara aktif mencari celah.
 
-Offensive Security → PROAKTIF: berpikir & bertindak seperti penyerang
-                     Tujuan: temukan & eksploitasi kelemahan SEBELUM hacker jahat
-                     Analogi: ujian ketahanan dengan menyerang sendiri
-                     Metode: penetration testing, red teaming, vulnerability assessment
+Praktik dilakukan dalam lingkungan yang aman dan legal, artinya target yang diserang adalah sistem simulasi (seperti lab FakeBank pada room ini) atau sistem nyata yang sudah mendapat izin resmi dari pemiliknya. Tanpa izin, tindakan yang sama akan berubah status menjadi ilegal meskipun teknik yang dipakai identik.
 
-Defensive Security → REAKTIF: lindungi sistem dari serangan
-                     Tujuan: deteksi, cegah, respon terhadap ancaman
-                     Analogi: benteng pertahanan & sistem alarm
-                     Metode: monitoring, firewall, IDS/IPS, incident response
+Perbandingan dengan Defensive Security
+**Offensive security** berfokus pada mencari dan mengeksploitasi celah (menyerang untuk menguji ketahanan), sedangkan **defensive security** berfokus pada mendeteksi, mencegah, dan merespons serangan (melindungi sistem yang sudah berjalan). Kedua pendekatan ini saling melengkapi: temuan dari sisi offensive menjadi dasar perbaikan di sisi defensive.
 
-Perbedaan Utama:
-• Offensive = CARI celah dengan menyerang (simulate attacker)
-• Defensive = TUTUP celah & tangkal serangan (protect & detect)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. METODOLOGI DASAR YANG DIPRAKTIKKAN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+Room ini mempraktikkan dua tahap dasar dari sebuah serangan web sederhana, yaitu enumeration dan exploitation.
 
-## KONSEP HACKING ETIS
+2.1 Enumeration (Content Discovery)
+Tahap ini bertujuan memetakan sisi aplikasi yang tidak terlihat langsung oleh pengguna biasa, khususnya halaman-halaman yang tidak ditautkan di navigasi utama situs namun sebenarnya masih bisa diakses jika alamatnya diketahui. Kesalahan konfigurasi seperti ini disebut **hidden pages** dan menjadi salah satu penyebab kebocoran akses yang paling umum ditemukan di aplikasi web nyata.
 
-Definisi: Hacking yang dilakukan secara LEGAL dalam lingkungan AMAN
-Syarat Mutlak:
-  ✓ Ada izin resmi dari pemilik sistem
-  ✓ Dilakukan di environment yang terkontrol (lab/sandbox)
-  ✓ Mengikuti Rules of Engagement (ROE)
+Teknik yang dipakai untuk menemukan hidden pages disebut **directory brute force**: mencoba banyak kemungkinan nama direktori/file secara berurutan terhadap sebuah URL target, lalu mencatat mana saja yang merespons sebagai halaman valid.
 
-Tujuan:
-• Latihan skill offensive tanpa melanggar hukum
-• Pahami cara kerja serangan cyber
-• Berlatih seperti skenario nyata tapi AMAN
+2.2 Exploitation (Broken Access Control)
+Setelah halaman tersembunyi ditemukan, tahap berikutnya adalah menguji apakah halaman tersebut benar-benar terlindungi. Pada studi kasus FakeBank, admin panel yang ditemukan ternyata dapat diakses langsung tanpa proses login atau autentikasi apa pun. Kelemahan jenis ini disebut **broken access control** — kondisi di mana suatu fungsi yang seharusnya dibatasi hanya untuk pengguna dengan hak akses tertentu (misalnya staff/admin) justru bisa diakses dan digunakan oleh siapa saja yang mengetahui URL-nya.
 
-Platform Latihan:
-• TryHackMe → guided learning, step-by-step labs
-• Hack The Box → CTF challenges, realistic machines
-• VulnHub → vulnerable VMs untuk practice
+Dampak dari broken access control pada kasus ini bersifat langsung dan konkret: pengguna tanpa otorisasi dapat memanipulasi data finansial (menambah saldo rekening) hanya dengan mengetik URL tertentu dan mengisi form yang tersedia di halaman tersebut.
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. STUDI KASUS: FAKEBANK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## WEB APPLICATION SECURITY BASICS
+Alur Serangan
+1. Target aplikasi: `http://fakebank.thm`, sebuah simulasi aplikasi perbankan.
+2. Enumeration dijalankan terhadap domain target untuk menemukan halaman tersembunyi. Hasil scan menemukan dua URL, salah satunya adalah endpoint admin.
+3. Endpoint admin diakses langsung melalui browser dengan menambahkan path `/bank-transfer` ke URL utama, tanpa proses login sama sekali.
+4. Di dalam admin panel tersedia form untuk mendeposit uang ke nomor akun tertentu. Kelemahan dieksploitasi dengan memasukkan nomor akun milik sendiri dan mengisi nominal deposit, lalu menekan tombol submit.
+5. Perubahan saldo pada akun membuktikan bahwa eksploitasi berhasil — ini adalah bentuk sederhana dari **proof of concept**, yaitu bukti nyata bahwa suatu kerentanan benar-benar bisa dimanfaatkan, bukan sekadar dugaan teoritis.
 
-Kelemahan Umum Web Apps:
+Inti Pelajaran dari Kasus Ini
+Kelemahan yang dieksploitasi bukan berasal dari kerentanan teknis yang rumit (seperti bug pada kode), melainkan dari kesalahan desain akses: halaman sensitif yang seharusnya memerlukan autentikasi malah dibiarkan terbuka. Ini menegaskan bahwa proses enumeration — sekadar mencari halaman yang "tersembunyi" — sudah cukup untuk membuka jalan eksploitasi jika kontrol akses di baliknya tidak diterapkan dengan benar.
 
-1. Hidden Pages / Directory Traversal
-   Masalah: Halaman admin/sensitive bisa diakses tanpa autentikasi
-   Contoh: /admin, /backup, /config, /bank-transfer
-   Dampak: Akses tidak sah ke fungsi privileged
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. TOOL & COMMAND YANG DIPAKAI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-2. Broken Access Control
-   Masalah: User biasa bisa akses fungsi admin
-   Contoh: Manipulasi URL untuk akses admin panel
-   Dampak: Privilege abuse, data manipulation
+Dirb
+**Dirb** adalah tool untuk directory brute force: mencoba daftar nama direktori/file dari sebuah wordlist terhadap URL target, lalu melaporkan mana saja yang benar-benar ada di server.
 
-3. Insecure Direct Object Reference (IDOR)
-   Masalah: Parameter bisa diubah untuk akses data orang lain
-   Contoh: ?account=8881 → ubah jadi ?account=8882
-   Dampak: Data breach, unauthorized access
+```
+dirb http://fakebank.thm
+```
 
+Penjelasan bagian command:
+- `dirb` — memanggil tool dirb.
+- `http://fakebank.thm` — argumen wajib berupa URL target yang akan di-brute force; dirb akan menggunakan wordlist bawaannya untuk mencoba berbagai kemungkinan path terhadap domain ini.
 
-## TOOLS DASAR OFFENSIVE SECURITY
+Cara membaca output: setiap baris hasil yang diawali tanda `+` menunjukkan sebuah path yang berhasil ditemukan (artinya server memberi respons valid, bukan halaman kosong/tidak ada). Baris tanpa tanda tersebut bukan hasil temuan dan bisa diabaikan.
 
-Dirb / Dirbuster
-  Fungsi: Brute force directory & file discovery di web server
-  Cara Kerja: Coba ribuan kemungkinan nama direktori dari wordlist
-  Syntax: dirb http://target.thm
-  Output: Daftar URL yang ditemukan (kode HTTP 200 = found)
-  
-  Kapan Pakai:
-  • Content discovery / enumeration
-  • Cari halaman tersembunyi yang tidak ter-link
-  • Mapping struktur direktori website
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. ISTILAH PENTING YANG WAJIB DIHAPAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Gobuster
-  Fungsi: Sama seperti Dirb tapi lebih cepat (multithreading)
-  Syntax: gobuster dir -u http://target.thm -w wordlist.txt
-  
-Burp Suite
-  Fungsi: Intercept & modify HTTP request/response
-  Gunakan untuk: manipulasi request, fuzzing, vulnerability scanning
+**Offensive security** — pendekatan proaktif yang mencari kelemahan sistem dengan cara mensimulasikan serangan, dilakukan sebelum penyerang sungguhan menemukannya.
 
-Nmap
-  Fungsi: Port scanning & service enumeration
-  Contoh: nmap -sV target.thm → deteksi service & versi
+**Defensive security** — pendekatan yang berfokus pada mendeteksi, mencegah, dan merespons ancaman terhadap sistem yang sudah berjalan.
 
-Metasploit
-  Fungsi: Framework eksploitasi dengan database exploit
-  Gunakan untuk: automate exploitation process
+**Ethical hacking** — praktik hacking yang dilakukan secara legal, di lingkungan aman atau dengan izin resmi, untuk tujuan menemukan dan melaporkan kelemahan keamanan.
 
+**Enumeration / content discovery** — proses aktif memetakan bagian-bagian sistem atau aplikasi yang belum diketahui, seperti halaman, direktori, atau service yang berjalan.
 
-## TAHAPAN SERANGAN WEB (SIMPLIFIED)
+**Directory brute force** — teknik mencoba banyak kemungkinan nama direktori/file secara sistematis terhadap sebuah target untuk menemukan halaman yang tidak terlihat secara publik.
 
-1. Reconnaissance (Pengintaian)- Kumpulkan info tentang target- Identifikasi teknologi yang dipakai (CMS, framework, server)- TIDAK ada interaksi langsung dengan sistem
+**Hidden pages** — halaman pada suatu aplikasi web yang tidak ditautkan di navigasi/menu utama, namun tetap dapat diakses apabila URL-nya diketahui.
 
-2. Enumeration (Enumerasi)- SCAN sistem untuk temukan attack surface- Tools: Dirb, Nmap, Nikto- Output: daftar direktori, port terbuka, service running
+**Broken access control** — kelemahan keamanan di mana kontrol pembatasan akses tidak diterapkan dengan benar, sehingga fungsi yang seharusnya terbatas (misalnya khusus admin) dapat diakses oleh pengguna yang tidak berwenang.
 
-3. Exploitation (Eksploitasi)- Manfaatkan kelemahan untuk gain access- Contoh: akses /admin tanpa autentikasi- Contoh: manipulasi parameter untuk ubah data
+**Admin panel** — antarmuka pengelolaan sistem yang seharusnya hanya bisa diakses oleh administrator atau staf berwenang.
 
-4. Post-Exploitation- Maintain access atau pivot ke sistem lain- Extract data sensitif- Cover tracks (hapus log)
-
-
-## LAB PRACTICE: FAKEBANK SCENARIO
-
-Skenario: Aplikasi banking dengan kelemahan keamanan
-
-Step 1: Directory Enumeration
-  Command: dirb http://fakebank.thm
-  Goal: Temukan hidden pages
-  Expected Output: 2 URLs ditemukan (termasuk /bank-transfer)
-
-Step 2: Access Hidden Admin Page
-  URL: http://fakebank.thm/bank-transfer
-  Finding: Admin panel TIDAK memerlukan autentikasi
-  Vulnerability: Broken Access Control
-
-Step 3: Exploit the Weakness
-  Action: Deposit money ke account 8881
-  Method: Gunakan admin panel untuk manipulasi saldo
-  Result: Saldo berubah → proof of exploitation
-  Flag: "BANK-HACKED" (pop-up hijau setelah berhasil)
-
-Step 4: Documentation
-  Catat: Vulnerability type, steps to reproduce, impact
-  Report: Broken Access Control → unauthorized fund manipulation
-
-
-## INDIKATOR HTTP RESPONSE
-
-Kode Status yang Penting Dikenali:
-
-200 OK           → Halaman ditemukan & berhasil diakses (TARGET UTAMA)
-301 Moved        → Redirect permanent
-302 Found        → Redirect temporary
-401 Unauthorized → Butuh autentikasi (halaman ada tapi protected)
-403 Forbidden    → Halaman ada tapi akses ditolak
-404 Not Found    → Halaman tidak ada
-500 Server Error → Error di server (bisa jadi celah)
-
-Saat Dirb Scanning:
-• Fokus pada response 200 → halaman aktif yang bisa diakses
-• Response 403 → ada file/folder tapi diblokir (investigasi lebih lanjut)
-• Response 301/302 → ikuti redirect untuk lihat endpoint sebenarnya
-
-
-## BEST PRACTICES OFFENSIVE SECURITY
-
-✓ SELALU dapat izin tertulis sebelum test
-✓ Kerja di environment TERISOLASI (lab/VM)
-✓ Dokumentasikan SEMUA langkah yang dilakukan
-✓ Pahami scope & batasan testing
-✓ Jangan test sistem production tanpa approval
-✓ Gunakan VPN saat connect ke platform lab (TryHackMe/HTB)
-✓ Backup data sebelum exploit (lab bisa crash)
-
-✗ JANGAN exploit sistem tanpa izin (= ILEGAL)
-✗ JANGAN bagikan exploit untuk sistem nyata
-✗ JANGAN gunakan skill untuk keuntungan pribadi ilegal
-✗ JANGAN lewati tahap enumeration (bisa miss important info)
-
-
-## ISTILAH WAJIB HAPAL
-
-- **Offensive Security**: pendekatan proaktif cari celah dengan simulate attack
-- **Defensive Security**: pendekatan reaktif lindungi sistem dari ancaman
-- **Ethical Hacking**: hacking legal dengan izin untuk tujuan keamanan
-- **Content Discovery**: proses menemukan file/direktori tersembunyi di web
-- **Directory Brute Force**: coba banyak kemungkinan nama direktori sampai ketemu
-- **Hidden Pages**: halaman web yang tidak ter-link tapi masih accessible
-- **Broken Access Control**: kelemahan di mana user bisa akses fungsi yang seharusnya restricted
-- **Admin Panel**: interface management biasanya hanya untuk administrator
-- **Enumeration**: fase scanning untuk identifikasi detail sistem target
-- **HTTP Status Code**: kode respons server (200=OK, 404=Not Found, dll)
-- **Attack Surface**: semua titik masuk yang bisa diserang di sistem
-- **Wordlist**: daftar kata untuk brute force (directory names, passwords)
-- **Session**: koneksi aktif antara user dan aplikasi web
-- **Proof of Concept**: bukti bahwa vulnerability bisa dieksploitasi
-- **Flag**: string/tanda bukti berhasil selesaikan challenge (CTF)
-
-
-## COMMAND REFERENCE CEPAT
-
-# Directory brute force
-dirb http://target.thm
-gobuster dir -u http://target.thm -w /usr/share/wordlists/dirb/common.txt
-
-# Port scanning
-nmap -sV target.thm
-nmap -p- target.thm  # scan semua port
-
-# Web enumeration
-nikto -h http://target.thm
-whatweb http://target.thm
-
-# Manual testing
-curl http://target.thm/admin  # test akses URL
-wget http://target.thm/backup.zip  # download file
+**Proof of concept** — bukti nyata dan terverifikasi bahwa suatu kerentanan memang bisa dieksploitasi, bukan sekadar asumsi teoritis.
