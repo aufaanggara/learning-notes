@@ -1,6 +1,3 @@
-Betul, materi sudah ada semua dari percakapan di atas. Ini resumenya:
-
-```
 === Computer Fundamentals - Resume Materi ===
 [29 Aug 2026]
 
@@ -198,4 +195,3 @@ Betul, materi sudah ada semua dari percakapan di atas. Ini resumenya:
    Tidak ada link, software, atau layanan online yang direkomendasikan
    dalam materi Computer Fundamentals ini — room bersifat konseptual
    murni tanpa praktik tooling.
-```
