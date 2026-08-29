@@ -1,5 +1,8 @@
+Betul, materi sudah ada semua dari percakapan di atas. Ini resumenya:
+
+```
 === Computer Fundamentals - Resume Materi ===
-[17 Aug 2026]
+[29 Aug 2026]
 
 
 1. MENGAPA PERLU PAHAM KOMPUTER
@@ -135,7 +138,7 @@
    terdeteksi dan dihapus.
 
 
-6. GLOSSARY — ISTILAH WAJIB HAPAL
+6. GLOSSARY
 
    Booting          Proses menyalakan komputer dari keadaan mati hingga
                     OS siap digunakan.
@@ -187,3 +190,12 @@
    Molex Connector  Konektor daya dari PSU yang digunakan untuk
                     menyuplai listrik ke komponen tertentu seperti
                     storage dan kipas.
+
+
+7. TOOLS & PLATFORM RUJUKAN
+
+   Room ini tidak menyebutkan tools atau platform eksternal apapun.
+   Tidak ada link, software, atau layanan online yang direkomendasikan
+   dalam materi Computer Fundamentals ini — room bersifat konseptual
+   murni tanpa praktik tooling.
+```
