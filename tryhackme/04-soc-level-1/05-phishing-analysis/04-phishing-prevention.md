@@ -199,3 +199,85 @@ Meski pertahanan teknis sudah kuat, sebagian pesan phishing tetap akan lolos ke 
 - **DMARC Inspector** (dmarcian) — membantu memahami dan memperbaiki error spesifik pada DMARC record
 - **Google Admin Toolbox — Messageheader** — menganalisis detail pengiriman email (termasuk hasil SPF/DKIM/DMARC) dari full header email
 - **Wireshark** — tool analisis traffic jaringan, digunakan pada room ini untuk memeriksa traffic SMTP dan isi email dari file pcap
+
+---
+
+## 7. Catatan Ringkas untuk Ditulis Tangan
+
+### Autentikasi Email
+
+SPF — DNS TXT record, daftar IP/domain berwenang kirim atas nama domain
+SPF format: v=spf1 ip4:<ip> include:<domain> -all
+-all — tolak pengirim tak terdaftar (hard fail)
+SPF hasil: Pass/Neutral/None → Accept
+SPF hasil: SoftFail/PermError → Flag (tetap masuk, ditandai)
+SPF hasil: Fail/TempError → Reject
+
+DKIM — tanda tangan digital email, tahan forwarding
+DKIM pakai private key (sign) + public key (verify), keduanya pasangan
+DKIM format: v=DKIM1; k=rsa; p=<public_key>
+k=rsa — algoritma kunci
+p= — public key
+dkim=permerror — gagal verifikasi permanen (key hilang/salah/dimodif forwarder)
+
+DMARC — alignment SPF+DKIM vs domain "From"
+DMARC format: v=DMARC1; p=<policy>; rua=mailto:<email>
+rua= — tujuan laporan agregat
+Policy none — no action, monitoring saja
+Policy quarantine — masuk folder spam
+Policy reject — paling ketat, langsung ditolak
+
+S/MIME — email signed + encrypted, kriptografi kunci publik
+Digital Signature (sign pakai private key sender) → Authentication, Non-repudiation, Data Integrity
+Encryption (encrypt pakai public key recipient) → Confidentiality
+
+### Wireshark — Filter SMTP
+
+smtp — semua packet SMTP
+smtp.response.code — packet yang punya response code
+smtp.response.code == 220 — filter kode spesifik
+<proto> contains "teks" — cari string dalam packet, misal smtp contains "spamhaus"
+frame.number == n — cari packet by nomor urut (field umum, semua protokol)
+imf — packet format Internet Message Format (header+body email)
+imf contains "teks" — cari teks dalam header/body email
+
+### SMTP Response Code
+
+220 — Service ready
+421 — connection read error
+552 — diblokir, potential security issue
+553 — mailbox name not allowed (kena blocklist, misal spamhaus.org)
+
+### Inspeksi Email/Attachment
+
+X-Mailer — nama+versi email client pengirim
+User-Agent — mirip X-Mailer, lebih umum di webmail
+Content-Type — jenis konten (multipart/mixed, application/octet-stream, dst)
+Content-Transfer-Encoding — metode encoding attachment (contoh: base64)
+Content-Disposition — attachment; filename="..."
+.scr — ekstensi mencurigakan (screen saver disalahgunakan jadi executable)
+Cara cek isi lengkap: Follow > TCP Stream, atau tab "Reassembled SMTP"
+
+### Technical Defenses
+
+Email Filtering — filter reputasi IP/domain
+Secure Email Gateway (SEG) — deteksi impersonasi & spoofing
+Link Rewriting — ganti URL jadi redirect aman
+Sandboxing — isolasi file/link di environment virtual, amati perilaku
+
+### User-Facing Tools & Training
+
+Trust & Warning Indicators — banner "External Sender" dsb
+Phishing Reporting — tombol lapor cepat di email
+User Awareness Training — edukasi kenali phishing & social engineering
+Phishing Simulation Exercises — kampanye phishing terkontrol untuk uji karyawan
+3 aturan simulasi: stop-look-think sebelum klik / kenali red flag / verifikasi via medium lain
+
+### Tools Rujukan (hapal nama + fungsi singkat)
+
+SPF Surveyor (dmarcian) — cek/visualisasi SPF record
+DKIM Record Checker & Validator (dmarcian) — cek DKIM record
+Domain Checker (dmarcian) — cek SPF+DKIM+DMARC sekaligus
+DMARC Inspector — perbaiki error DMARC spesifik
+Google Admin Toolbox Messageheader — analisis full header email
+Wireshark — analisis traffic pcap
