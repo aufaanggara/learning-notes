@@ -1,18 +1,23 @@
-# Computer Types — Resume Materi
-**TryHackMe | Sophia's Summer of Hidden Computers**
-*29 Agustus 2026*
+# 01 — Inside a Computer System
+**TryHackMe | Computer Types (Sophia's Summer of Hidden Computers)**
+*21 Oktober 2026*
 
 ---
 
 ## 1. Konsep Dasar
 
-### 1.1 Definisi Komputer
+### 1.1 Apa Itu Komputer
 
-Komputer adalah mesin yang memproses informasi berdasarkan instruksi. Definisi ini jauh lebih luas dari yang kebanyakan orang bayangkan — komputer tidak terbatas pada laptop dan ponsel, melainkan hadir di dalam benda-benda sehari-hari seperti pintu otomatis, kulkas, lampu, dan mesin kopi.
+Komputer adalah mesin yang memproses informasi berdasarkan instruksi. Definisi ini lebih luas dari yang kebanyakan orang bayangkan — komputer tidak terbatas pada laptop dan ponsel, melainkan hadir di dalam benda-benda sehari-hari seperti pintu otomatis, kulkas, lampu, dan mesin kopi.
+
+Dua pelajaran utama yang perlu dipahami sejak awal:
+
+- Tidak semua komputer dirancang untuk berpindah-pindah.
+- Tidak semua komputer dirancang untuk dioperasikan langsung oleh manusia.
 
 ### 1.2 Prinsip Fundamental
 
-Setiap desain komputer adalah **trade-off**. Tidak ada satu komputer yang bisa dioptimalkan sekaligus untuk semua kebutuhan. Yang menentukan bentuk dan kemampuan sebuah komputer adalah tujuan penggunaannya.
+Setiap desain komputer adalah **trade-off**. Tidak ada satu komputer yang bisa dioptimalkan sekaligus untuk semua kebutuhan. Yang menentukan bentuk dan kemampuan sebuah komputer adalah tujuan penggunaannya — bukan ukurannya, bukan harganya.
 
 > "There is no best computer. There is only the right tool for the job."
 
@@ -46,7 +51,7 @@ Keempat jenis ini digunakan oleh manusia yang berinteraksi langsung dengannya. T
 Dirancang untuk portabilitas — ringan, berbasis baterai, mudah dibawa. Konsekuensinya, menjaga suhu tetap rendah di bodi kecil adalah tantangan besar, sehingga performa akan menurun saat menjalankan beban kerja berat dalam durasi panjang.
 
 **Desktop**
-Menggunakan listrik langsung dari stopkontak dan memiliki ruang lebih besar untuk sistem pendingin. Akibatnya, performa lebih konsisten dan stabil untuk durasi panjang. Tidak dirancang untuk berpindah tempat.
+Menggunakan listrik langsung dari stopkontak dan memiliki ruang lebih besar untuk sistem pendingin. Performa lebih konsisten dan stabil untuk durasi panjang dibanding laptop. Tidak dirancang untuk berpindah tempat.
 
 **Workstation**
 Secara visual mirip desktop, tetapi dibangun dengan komponen khusus yang memprioritaskan akurasi dan keandalan — bukan sekadar kecepatan. Digunakan untuk simulasi ilmiah, rendering 3D, dan komputasi kompleks, di mana satu kesalahan kalkulasi bisa merusak keseluruhan hasil kerja.
@@ -82,10 +87,10 @@ Keduanya bisa berukuran kecil dan memiliki satu fungsi saja, sehingga sering dik
 |---|---|---|
 | Koneksi jaringan | Selalu terhubung | Tidak harus terhubung |
 | Cara kerja | Kirim data / terima perintah | Bekerja sendiri di dalam mesin |
-| Visibilitas | Ada antarmuka (aplikasi) | Tidak terlihat, tidak ada antarmuka |
+| Visibilitas | Ada antarmuka, biasanya lewat app | Tidak terlihat, tidak ada antarmuka |
 
 **Ilustrasi nyata:**
-Pintu otomatis di gedung menggunakan embedded computer — komputer kecil di dalam rangka pintu yang mendeteksi gerakan dan memberi sinyal ke motor untuk membuka. Ia tidak terhubung ke internet, tidak punya aplikasi, dan tidak ada yang tahu ia ada. Itulah embedded computing: *invisible, reliable, everywhere.*
+Pintu otomatis di sebuah gedung menggunakan embedded computer — komputer kecil di dalam rangka pintu yang mendeteksi gerakan dan memberi sinyal ke motor untuk membuka. Ia tidak terhubung ke internet, tidak punya aplikasi, dan tidak ada yang tahu ia ada. Itulah embedded computing: *invisible, reliable, everywhere.*
 
 ---
 
@@ -169,3 +174,47 @@ Komputer kelas profesional dengan komponen khusus yang mengutamakan akurasi dan 
 ## 7. Tools & Platform Rujukan
 
 Tidak ada tools atau platform eksternal yang direferensikan dalam room ini.
+
+---
+
+## 8. Catatan Ringkas untuk Ditulis Tangan
+
+### Prinsip Inti
+- Trade-off — setiap desain korbankan sesuatu untuk dapat sesuatu
+- Mobilitas vs Performa — makin portabel, makin terbatas sustained-nya
+- Keandalan vs Biaya — redundansi = mahal tapi tidak mati
+- Tujuan → Desain — bentuk komputer ditentukan fungsinya
+
+### Jenis Komputer (Direct-Use)
+- Laptop — portabel, baterai, lemah untuk beban berat lama
+- Desktop — listrik stopkontak, pendingin baik, tidak mobile
+- Workstation — komponen khusus, utamakan akurasi bukan kecepatan
+- Server — no screen/keyboard, 24/7, layani banyak user via jaringan
+
+### Jenis Komputer (Hidden)
+- Smartphone — komputer saku, optimalkan baterai + konektivitas
+- Tablet — touch-first, layar lebih besar dari HP
+- IoT Device — 1 fungsi + terhubung jaringan, kirim/terima data
+- Embedded Computer — ditanam di mesin lain, tidak harus online, tak terlihat
+
+### IoT vs Embedded
+- Sama: kecil, 1 fungsi
+- Beda: IoT selalu konek jaringan; Embedded tidak harus
+- Contoh IoT: thermostat, smart doorbell
+- Contoh Embedded: sensor pintu otomatis, chip dimmer lampu
+
+### Redundansi & Uptime (Server)
+- Redundansi — komponen cadangan berlapis, hilangkan single failure point
+- Single failure point — 1 titik rusak = seluruh sistem mati
+- Uptime — seberapa lama sistem aktif (%)
+- Power A off + Power B on → server tetap ONLINE (redundansi bekerja)
+- Power A off + Power B off → server OFFLINE
+- Uptime naik jika redundansi + backup + monitoring digabung
+
+### Pilih Komputer yang Tepat
+- Dibawa tiap hari → Laptop/Smartphone
+- Kerja berat di satu tempat → Desktop
+- Simulasi/3D/riset → Workstation
+- Layani banyak user → Server
+- Monitor kondisi via app → IoT Device
+- Komponen internal mesin → Embedded Computer
