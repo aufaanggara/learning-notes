@@ -1,8 +1,8 @@
 # Learning Notes
 
-Personal study notes collected throughout my cybersecurity learning journey.
+Catatan belajar pribadi selama perjalanan di bidang cybersecurity.
 
-This repo is not a portfolio — it's purely for personal reference. Contains summaries, key concepts, and important techniques from every platform and course I go through.
+Repo ini bukan portofolio : murni untuk referensi sendiri. Isinya rangkuman konsep, teknik, dan hal penting dari setiap platform dan kursus yang aku ikuti.
 
 ---
 
@@ -11,82 +11,19 @@ This repo is not a portfolio — it's purely for personal reference. Contains su
 ```
 learning-notes/
 ├── tryhackme/
-├── hackthebox/
-├── networking/
 ├── coursera/
+├── network/
 ├── linux-labs/
-├── overthewire/
-├── SQLzoo/
 └── README.md
 ```
 
 ---
 
-## Format
+## Notes
 
-Each `.md` file contains:
-- Key concepts learned
-- Important commands or techniques
-- Things to revisit or explore further
-
-No screenshots — notes only.
-
----
-
-## TryHackMe
-
-| Path / Room | Category | Status |
-|-------------|----------|--------|
-| *(add after each room)* | | |
-
----
-
-## HackTheBox
-
-| Machine | Difficulty | Status |
-|---------|------------|--------|
-| *(add after each machine)* | | |
-
----
-
-## Networking
-
-| Topic | Status |
-|-------|--------|
-| *(add after each topic)* | |
-
----
-
-## Coursera
-
-| Course | Status |
-|--------|--------|
-| *(add after each course)* | |
-
----
-
-## Linux Labs
-
-| Topic | Status |
-|-------|--------|
-| *(add after each topic)* | |
-
----
-
-## OverTheWire
-
-| Wargame | Level | Status |
-|---------|-------|--------|
-| *(add after each level)* | | |
-
----
-
-## SQLzoo
-
-| Exercise | Topic | Status |
-|----------|-------|--------|
-| *(add after each exercise)* | | |
-
----
-
-**By:** Muhammad Falah Aufa Anggara · [GitHub](https://github.com/aufaanggara)
+| Folder | Description |
+|--------|-------------|
+| [tryhackme/](./tryhackme/) | Notes from TryHackMe rooms and learning paths |
+| [coursera/](./coursera/) | Notes from Coursera courses |
+| [network/](./network/) | Networking concepts and study notes |
+| [linux-labs/](./linux-labs/) | Linux hands-on lab notes |
